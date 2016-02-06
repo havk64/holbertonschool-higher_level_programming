@@ -8,7 +8,7 @@ price = input("What is the price before tax? ")
 tax = input("What are the taxes? (in %) ")
 tip = input("What do you want to tip? (in %) ")
 
-#Using just one function to do all the job
+#Using two functions to do all the job
 #This first function just calculates the percentage
 def perc(n):
 	return float(n)/100
