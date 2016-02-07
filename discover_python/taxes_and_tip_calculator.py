@@ -14,12 +14,12 @@ def perc(n):
 	return float(n)/100
 
 #This second function calls the first in the second and third lines, adding the price to it and returns the total price in the last line
-def taxntips(price,tax,tip):
+def tax_tip(price,tax,tip):
 	price += price * perc(tax)
 	price += price * perc(tip)
 	return price
 
-#Here I'm using the function taxntips to calculate the total
-total = taxntips(price, tax, tip)
+#Here I'm using the function tax_tip to calculate the total
+total = tax_tip(price, tax, tip)
 #Formating the output to meet requirements
 print "The price you need to pay is: $%.6f." % total
