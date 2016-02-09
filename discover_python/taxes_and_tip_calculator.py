@@ -13,7 +13,8 @@ tip = input("What do you want to tip? (in %) ")
 def perc(n):
 	return float(n)/100
 
-#This second function calls the first in the second and third lines, adding the price to it and returns the total price in the last line
+"""This second function calls the first in the second and third lines, 
+adding the price to it and returns the total price in the last line"""
 def tax_tip(price,tax,tip):
 	price += price * perc(tax)
 	price += price * perc(tip)
