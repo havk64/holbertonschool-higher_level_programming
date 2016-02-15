@@ -1,11 +1,12 @@
 var https = require('https');
 
+var token = process.env.TOKEN;
 var options = {
 	hostname: 'api.github.com',
 	path: '/search/repositories?q=language:javascript&sort=stars&order=desc',
 	headers: {
 	'User-Agent': 'Holberton_School',
-	'Authorization': 'token 6961f6a124fb9de5f1baf98010b993fa87350b98'
+	'Authorization': 'token '+token
   }
 }
 
