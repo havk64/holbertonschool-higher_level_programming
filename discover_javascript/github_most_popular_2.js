@@ -19,9 +19,9 @@ const streamToString = (stream, cb) => {
   });
 }
 const req = https.request(options, (res) => {
-	streamToString(res, (data) => {
-	console.log(typeof data);
-	console.log(data);
+	streamToString(res, (jsonString) => {
+	console.log(typeof jsonString);
+	console.log(jsonString);
     });
 });
 req.end();

@@ -40,15 +40,8 @@ req.on('error', (e) => {
 const compute = (result) => {
     const final = [];
     result.map((user) => {
-        const users = {
-            hostname: 'api.github.com',
-            path: '/users/'+user.login,
-            headers: {
-                'User-Agent': 'Holberton_School',
-                'Authorization': 'token 6a54def2525aa32b003337b31487e321d6a2bb59'
-            }
-        }
-        const reqUser = https.request(users, (res) => {
+        options.path = '/users/'+user.login;
+        const reqUser = https.request(options, (res) => {
             streamToString(res, (data) => {
                 data = JSON.parse(data);
                 final.push({"full_name": user.fullName, "location": data.location});
