@@ -1,17 +1,16 @@
-var https = require('https');
-var fs = require('fs');
+const https = require('https');
+const fs = require('fs');
 
-var token = process.env.TOKEN;
-var options = {
+const options = {
 	hostname: 'api.github.com',
 	path: '/search/repositories?q=language:javascript&sort=stars&order=desc',
 	headers: {
 	'User-Agent': 'Holberton_School',
-	'Authorization': 'token '+token
+	'Authorization': 'token 6a54def2525aa32b003337b31487e321d6a2bb59'
   }
 }
 
-function streamToString(stream, cb) {
+const streamToString = (stream, cb) => {
   const chunks = [];
   stream.on('data', (chunk) => {
     chunks.push(chunk);
@@ -20,9 +19,9 @@ function streamToString(stream, cb) {
     cb(chunks.join(''));
   });
 }
-var req = https.request(options, function(res) {
-	streamToString(res, function(data){
-	fs.writeFile("/tmp/23", data, function(err){
+const req = https.request(options, (res) => {
+	streamToString(res, (data) => {
+	fs.writeFile("/tmp/23", data, (err) => {
 		if(err) {
 			return console.log(err);
 		}	
@@ -33,6 +32,6 @@ var req = https.request(options, function(res) {
 });
 req.end();
 
-req.on('error', function(e) {
+req.on('error', (e) => {
 	console.log(e);
 });
