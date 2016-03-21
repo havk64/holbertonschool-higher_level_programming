@@ -12,4 +12,4 @@ search = 'https://api.github.com/search/repositories?q=language:ruby&sort=stars&
 http = HTTPClient.new
 res = http.get_content(search, extheaders)
 string = JSON.parse(res)
-puts string["items"].map { |item| item["full_name"]}.join("\n")
+string["items"].map { |item| puts item["full_name"]}.join("\n")
