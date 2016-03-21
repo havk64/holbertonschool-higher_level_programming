@@ -9,6 +9,9 @@ search = 'https://api.github.com/search/repositories?q=language:ruby&sort=stars&
 
 http = HTTPClient.new
 res = http.get_content(search, extheaders)
+
+# Handling exceptions in case of any problem --
+# Otherwhise confirms that the file was writen and closes it.
 begin
   file = File.open('/tmp/23', 'w')
   file.write(res)
