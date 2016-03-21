@@ -9,6 +9,11 @@ search = 'https://api.github.com/search/repositories?q=language:ruby&sort=stars&
 
 http = HTTPClient.new
 res = http.get_content(search, extheaders)
-File.open('/tmp/23', 'w') { |file| file.write(res)}
-
-
+begin
+  file = File.open('/tmp/23', 'w')
+  file.write(res)
+rescue Exception => e
+  print "Failed to create/write to the file:\n" + e.to_s
+ensure
+  (print "The file was saved!"; file.close;) unless file.nil?
+end
