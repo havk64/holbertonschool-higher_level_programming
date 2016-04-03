@@ -9,8 +9,14 @@ url = 'https://api.github.com/search/repositories?q=language:python&sort=stars&o
 request = urllib2.Request(url, headers=request_headers)
 contents = urllib2.urlopen(request).read()
 
-file = open('/tmp/23','w')
-file.write( contents )
-file.close()
-print 'The file was saved!'
+try:
+    file = open('/tmp/23','w')
+    file.write( contents )
+    file.close()
+    print 'The file was saved!'
+except Exception as e:
+    print 'Something went wrong!'
+    print e
+    sys.exit(0)
+
 
