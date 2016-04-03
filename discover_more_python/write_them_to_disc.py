@@ -7,6 +7,8 @@ request_headers = {
     }
 url = 'https://api.github.com/search/repositories?q=language:python&sort=stars&order=desc'
 
+""" This functions accepts two arguments, the file and the content to be written to the file
+and returns a friendly message in case of succes or fail!"""
 def write_to_file(file,content):
     try:
         file = open(file,'w')
@@ -14,12 +16,12 @@ def write_to_file(file,content):
         file.close()
         print 'The file was saved!'
         
-    except Exception as e:
+    except Exception as e: # The exception object is asigned to the variable 'e'
         print 'Something went wrong!'
-        print e
+        print e  # Prints the error message to the console in case of error
         sys.exit(0)
 
-request = urllib2.Request(url, headers=request_headers)
+request = urllib2.Request(url, headers=request_headers) # Makes the request to the Github API
 contents = urllib2.urlopen(request).read()
 
 file = '/tmp/23'
