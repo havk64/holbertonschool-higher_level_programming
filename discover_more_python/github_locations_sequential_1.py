@@ -2,6 +2,8 @@ import urllib2
 import json
 import sys
 
+"""This function will convert any decoded JSON object from using unicode strings \
+to UTF-8-encoded byte strings"""
 def json_loads_byteified(json_text):
     return _byteify(
         json.loads(json_text, object_hook=_byteify),
@@ -35,6 +37,7 @@ request = urllib2.Request(url, headers=request_headers)
 contents = urllib2.urlopen(request).read()
 json_data = json.loads(contents)
 
+#Function used to get the location of each user and concatenate with its full name.
 def get_location(user):
     url_user = user['owner']['url']
     req = urllib2.Request(url_user, headers=request_headers)
@@ -47,8 +50,3 @@ for user in json_data['items']:
     python_masters.append(json_loads_byteified(get_location(user)))
 print python_masters
 
-# get_location(json_data['items'][0])
-
-#   
-#    for name in json_data['items']:
-#        print name['full_name']
