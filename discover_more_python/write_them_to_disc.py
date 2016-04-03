@@ -7,17 +7,20 @@ request_headers = {
     }
 url = 'https://api.github.com/search/repositories?q=language:python&sort=stars&order=desc'
 
+def write_to_file(file,content):
+    try:
+        file = open(file,'w')
+        file.write( contents )
+        file.close()
+        print 'The file was saved!'
+        
+    except Exception as e:
+        print 'Something went wrong!'
+        print e
+        sys.exit(0)
+
 request = urllib2.Request(url, headers=request_headers)
 contents = urllib2.urlopen(request).read()
 
-try:
-    file = open('/tmp/23','w')
-    file.write( contents )
-    file.close()
-    print 'The file was saved!'
-except Exception as e:
-    print 'Something went wrong!'
-    print e
-    sys.exit(0)
-
-
+file = '/tmp/23'
+write_to_file(file, contents)    
