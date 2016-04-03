@@ -1,8 +1,9 @@
-import urllib
+from urllib import urlencode
+from sys import exit
 import urllib2
 import urlparse
 import json
-import sys
+
 
 request_headers = {
         'User-Agent': 'Holberton_School',
@@ -19,7 +20,8 @@ query = {
 def http_req(path, query):
     purl = list(urlparse.urlparse(url))
     purl[2] = path
-    purl[4] = urllib.urlencode(query)
+    purl[4] = urlencode(query)
+    print purl
     purl = urlparse.urlunparse(purl)
     request = urllib2.Request(purl,headers=request_headers)
 
@@ -30,12 +32,12 @@ def http_req(path, query):
         print "Something went wront"
         print "The main reason is: ", str(error.reason)
         print error
-        sys.exit(0)
+        exit(0)
     except urllib2.URLError as error:
         print "Something went wrong!"
         print "The main reason is: ", str(error.reason)
         print error
-        sys.exit(0)
+        exit(0)
         
 json_data = http_req(path,query)
 
