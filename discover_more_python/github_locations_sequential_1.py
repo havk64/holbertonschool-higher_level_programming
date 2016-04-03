@@ -23,7 +23,6 @@ def http_req(path, query):
     if query:
         purl[4] = urlencode(query)
     purl = urlunparse(purl)
-    print purl
     request = urllib2.Request(purl,headers=request_headers)
 
     try:
@@ -39,8 +38,6 @@ def http_req(path, query):
         print "The main reason is: ", str(error.reason)
         print error
         exit(0)
-        
-json_data = http_req(path,query)
 
 #Function used to get the location of each user and concatenate with its full name.
 def get_location(user):
@@ -49,7 +46,12 @@ def get_location(user):
     user_obj = {'full_name': user['full_name'],'location':content['location']}
     return user_obj
 
-python_masters = []
-for user in json_data['items']:
-    python_masters.append(get_location(user))
-print json.dumps(python_masters)
+
+def get_data():
+    json_data = http_req(path,query)
+    python_masters = []
+    for user in json_data['items']:
+        python_masters.append(get_location(user))
+    print json.dumps(python_masters)
+    
+get_data()
