@@ -1,7 +1,7 @@
+from urlparse import urlparse, urlunparse
 from urllib import urlencode
 from sys import exit
 import urllib2
-import urlparse
 import json
 
 
@@ -18,11 +18,10 @@ query = {
 }
 
 def http_req(path, query):
-    purl = list(urlparse.urlparse(url))
+    purl = list(urlparse(url))
     purl[2] = path
     purl[4] = urlencode(query)
-    print purl
-    purl = urlparse.urlunparse(purl)
+    purl = urlunparse(purl)
     request = urllib2.Request(purl,headers=request_headers)
 
     try:
