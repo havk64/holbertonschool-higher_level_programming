@@ -12,7 +12,7 @@ and returns a friendly message in case of succes or fail!"""
 def write_to_file(file,content):
     try:
         file = open(file,'w')
-        file.write( contents )
+        file.write( content )
         file.close()
         print 'The file was saved!'
         
