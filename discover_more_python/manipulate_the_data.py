@@ -1,5 +1,6 @@
 import urllib2
 import json
+import sys
 
 request_headers = {
         'User-Agent': 'Holberton_School',
@@ -11,5 +12,10 @@ request = urllib2.Request(url, headers=request_headers)
 contents = urllib2.urlopen(request).read()
 json_data = json.loads(contents)
 
-for name in json_data['items']:
-    print name['full_name']
+try:
+    for name in json_data['items']:
+        print name['full_name']
+except Exception as error:
+    print "Something went wrong!"
+    print error
+    sys.exit(0)
