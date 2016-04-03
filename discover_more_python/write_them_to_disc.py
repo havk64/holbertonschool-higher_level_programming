@@ -12,4 +12,5 @@ contents = urllib2.urlopen(request).read()
 file = open('/tmp/23','w')
 file.write( contents )
 file.close()
+print 'The file was saved!'
 
