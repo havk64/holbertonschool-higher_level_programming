@@ -12,6 +12,7 @@ request = urllib2.Request(url, headers=request_headers)
 contents = urllib2.urlopen(request).read()
 json_data = json.loads(contents)
 
+"""Handling the errors. In case of some failure a friendly and clean message is displayed."""
 try:
     for name in json_data['items']:
         print name['full_name']
