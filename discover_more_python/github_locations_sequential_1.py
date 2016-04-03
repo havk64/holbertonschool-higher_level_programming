@@ -20,8 +20,10 @@ query = {
 def http_req(path, query):
     purl = list(urlparse(url))
     purl[2] = path
-    purl[4] = urlencode(query)
+    if query:
+        purl[4] = urlencode(query)
     purl = urlunparse(purl)
+    print purl
     request = urllib2.Request(purl,headers=request_headers)
 
     try:
@@ -42,12 +44,11 @@ json_data = http_req(path,query)
 
 #Function used to get the location of each user and concatenate with its full name.
 def get_location(user):
-    url_user = user['owner']['url']
-    req = urllib2.Request(url_user, headers=request_headers)
-    user_content = urllib2.urlopen(req).read()
-    content = json.loads(user_content)
+    name = user['owner']['login']
+    content = http_req('/users/'+name,{})
     user_obj = {'full_name': user['full_name'],'location':content['location']}
     return user_obj
+
 python_masters = []
 for user in json_data['items']:
     python_masters.append(get_location(user))
