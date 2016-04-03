@@ -9,14 +9,14 @@ request_headers = {
         'User-Agent': 'Holberton_School',
         'Authorization': 'token 6a54def2525aa32b003337b31487e321d6a2bb59'
     }
-url = 'https://api.github.com'
-path = '/search/repositories'
-query = {
+url = 'https://api.github.com'  # Base URL
+path = '/search/repositories'   # Path for the first call
+query = {                       # Query for first call
     'q': 'language:python',
     'sort':'stars',
     'order':'desc'
 }
-
+"""The function http_req is used for all http requests and it handles the errors gracefully"""
 def http_req(path, query):
     purl = list(urlparse(url))
     purl[2] = path
@@ -47,11 +47,13 @@ def get_location(user):
     return user_obj
 
 
+# Main function to start all the data gathering
 def get_data():
     json_data = http_req(path,query)
     python_masters = []
     for user in json_data['items']:
         python_masters.append(get_location(user))
     print json.dumps(python_masters)
-    
+
+# Start it!!!
 get_data()
