@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 from urllib2 import Request, urlopen, HTTPError, URLError
 from sys import exit
 

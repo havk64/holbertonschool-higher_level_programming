@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 from urlparse import urlparse, urlunparse
 from urllib import urlencode
 from sys import exit
