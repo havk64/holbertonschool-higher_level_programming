@@ -1,10 +1,10 @@
 from urlparse import urlparse, urlunparse
 from urllib import urlencode
 from sys import exit
-import urllib2
-import json
-import Queue
-import threading
+from urllib2 import Request, urlopen, HTTPError, URLError
+from json import loads, dumps
+from Queue import Queue
+from threading import Thread
 
 
 request_headers = {
@@ -19,24 +19,24 @@ query = {                       # Query for first call
     'order':'desc'
 }
 
-"""The function http_req is used for all http requests and it handles the errors gracefully"""
+"""The function http_req is used for all http requests and handles the exceptions gracefully"""
 def http_req(path, query):
     purl = list(urlparse(url))
     purl[2] = path
     if query:
         purl[4] = urlencode(query)
     purl = urlunparse(purl)
-    request = urllib2.Request(purl,headers=request_headers)
+    request = Request(purl,headers=request_headers)
 
     try:
-        contents = urllib2.urlopen(request).read()
-        return json.loads(contents)
-    except urllib2.HTTPError as error:
+        contents = urlopen(request).read()
+        return loads(contents)
+    except HTTPError as error:
         print "Something went wront"
         print "The main reason is: ", str(error.reason)
         print error
         exit(0)
-    except urllib2.URLError as error:
+    except URLError as error:
         print "Something went wrong!"
         print "The main reason is: ", str(error.reason)
         print error
@@ -60,14 +60,14 @@ json_data = http_req(path,query)
 
 # Function that uses threading to do async http requests at the same time.
 def async():
-    result = Queue.Queue()
+    result = Queue()
     python_masters = []     # Array that will store the data of each user.
-    threads = [threading.Thread(target=get_data, args = (user, python_masters, result)) for user in json_data['items']  ]
+    threads = [Thread(target=get_data, args = (user, python_masters, result)) for user in json_data['items']  ]
     for t in threads:
         t.start()
     for t in threads:
         t.join()
-    print json.dumps(python_masters, sort_keys=True)
+    print dumps(python_masters, sort_keys=True)
 
 # Start it!!!   
 async()
