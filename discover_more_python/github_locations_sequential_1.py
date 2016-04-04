@@ -16,7 +16,7 @@ query = {                       # Query for first call
     'sort':'stars',
     'order':'desc'
 }
-"""The function http_req is used for all http requests and it handles the errors gracefully"""
+"""The function http_req is used for all http requests and handles the exceptions gracefully"""
 def http_req(path, query):
     purl = list(urlparse(url))
     purl[2] = path
