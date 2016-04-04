@@ -1,6 +1,6 @@
-import urllib2
-import json
-import sys
+from urllib2 import Request, urlopen
+from json import loads
+from sys import exit
 
 request_headers = {
         'User-Agent': 'Holberton_School',
@@ -8,9 +8,9 @@ request_headers = {
     }
 url = 'https://api.github.com/search/repositories?q=language:python&sort=stars&order=desc'
 
-request = urllib2.Request(url, headers=request_headers)
-contents = urllib2.urlopen(request).read()
-json_data = json.loads(contents)
+request = Request(url, headers=request_headers)
+contents = urlopen(request).read()
+json_data = loads(contents)
 
 """Handling the errors. In case of some failure a friendly and clean message is displayed."""
 try:
@@ -19,4 +19,4 @@ try:
 except Exception as error:
     print "Something went wrong!"
     print error
-    sys.exit(0)
+    exit(0)
