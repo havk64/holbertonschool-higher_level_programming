@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from urllib2 import Request, urlopen, HTTPError, URLError
 from json import loads
 from sys import exit
