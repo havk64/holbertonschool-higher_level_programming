@@ -55,12 +55,13 @@ def get_data(user,python_masters, queue):
     python_masters.append(result)
     queue.put( result )
 
-
+#First http call
 json_data = http_req(path,query)
 
+# Function that uses threading to do async http requests at the same time.
 def async():
     result = Queue.Queue()
-    python_masters = []
+    python_masters = []     # Array that will store the data of each user.
     threads = [threading.Thread(target=get_data, args = (user, python_masters, result)) for user in json_data['items']  ]
     for t in threads:
         t.start()
