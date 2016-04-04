@@ -7,9 +7,7 @@ request_headers = {
         'Authorization': 'token 6a54def2525aa32b003337b31487e321d6a2bb59'
     }
 url = 'https://api.github.com/search/repositories?q=language:python&sort=stars&order=desc'
-
 request = Request(url, headers=request_headers)
-#contents = urlopen(request).read()
 
 # Catching exceptions in http request:
 try:
