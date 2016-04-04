@@ -1,8 +1,8 @@
 from urlparse import urlparse, urlunparse
 from urllib import urlencode
 from sys import exit
-import urllib2
-import json
+from urllib2 import urlopen, Request, HTTPError, URLError
+from json import loads, dumps
 
 
 request_headers = {
@@ -17,24 +17,24 @@ query = {                       # Query for first call
     'order':'desc'
 }
 
-"""The function http_req is used for all http requests and it handles the errors gracefully"""
+"""The function http_req is used for all http requests and handles the exceptions gracefully"""
 def http_req(path, query):
     purl = list(urlparse(url))
     purl[2] = path
     if query:
         purl[4] = urlencode(query)
     purl = urlunparse(purl)
-    request = urllib2.Request(purl,headers=request_headers)
+    request = Request(purl,headers=request_headers)
 
     try:
-        contents = urllib2.urlopen(request).read()
-        return json.loads(contents)
-    except urllib2.HTTPError as error:
+        contents = urlopen(request).read()
+        return loads(contents)
+    except HTTPError as error:
         print "Something went wront"
         print "The main reason is: ", str(error.reason)
         print error
         exit(0)
-    except urllib2.URLError as error:
+    except URLError as error:
         print "Something went wrong!"
         print "The main reason is: ", str(error.reason)
         print error
@@ -53,7 +53,7 @@ def get_data():
     python_masters = []
     for user in json_data['items']:
         python_masters.append(get_location(user))
-    print json.dumps(python_masters, sort_keys=True)
+    print dumps(python_masters, sort_keys=True)
 
 # Start it!!!
 get_data()
