@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from urllib2 import Request, urlopen, HTTPError, URLError
 
 request_headers = {

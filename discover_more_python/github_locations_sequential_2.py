@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from urlparse import urlparse, urlunparse
 from urllib import urlencode
 from sys import exit
