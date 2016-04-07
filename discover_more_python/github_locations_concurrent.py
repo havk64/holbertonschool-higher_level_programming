@@ -68,7 +68,7 @@ def async():
         t.start()
     for t in threads:
         t.join()
-    print dumps(python_masters, sort_keys=True)
+    print(dumps(python_masters, indent=4, sort_keys=True))
 
 # Start it!!!   
 async()
