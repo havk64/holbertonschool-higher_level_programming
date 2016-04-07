@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from urllib2 import Request, urlopen, HTTPError, URLError
+from json import dumps, loads
 
 request_headers = {
         'User-Agent': 'Holberton_School',
@@ -10,7 +11,8 @@ request = Request(url, headers=request_headers) # Adding headers to the request
 
 # Catching exceptions
 try:
-    print urlopen(request).read()
+    # For a pretty output. ( Beauty always matters! ;-) )
+    print dumps(loads(urlopen(request).read()), indent=4, sort_keys=True)
 except HTTPError as error:
     print "Something went wrong!"
     print error
