@@ -1,9 +1,11 @@
+""" Importing const pi from math module """
 from math import pi
 
+#Defining the Circle Object.
 class Circle():
 
     def __init__(self, radius):
-        self.__radius = radius
+        self.__radius = radius 
         self.__center = []
         self.__color = ""
 
