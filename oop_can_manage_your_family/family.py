@@ -41,15 +41,15 @@ class Person():
     """Getter for first_name"""
     def get_first_name(self):
         return self.__first_name
-
+    """Getter for id"""
     def get_id(self):
         return self.__id
-
+    """Getter for eyes color"""
     def get_eyes_color(self):
         return self.__eyes_color
-
+    """Getter for date of birth"""
     def get_date_of_birth(self):
         return self.__date_of_birth
-
+    """Getter for genre"""
     def get_genre(self):
         return self.__genre
