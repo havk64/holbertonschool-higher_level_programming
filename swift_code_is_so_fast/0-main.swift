@@ -1,10 +1,12 @@
-/*
- * Project "Swift" by Paulin Laroche - Task 0
- * ===========================================
- */
+// ===---------------------------------------===//
+// Project "Swift" by Paulin Laroche - Task 0
+// by Alexandro de Oliveira, for Holberton School.
+// ===---------------------------------------===//
 
-/*
- * Function Reverse accepts reverses a string given as parameter.
+/**
+ * @discussion Function Reverse accepts reverses a string given as parameter.
+ * @param Accepts a string as argument.
+ * @return Returns the string given as argument reversed.
  */
 func reverse(str: String) -> String {
     return String(str.characters.reverse())
