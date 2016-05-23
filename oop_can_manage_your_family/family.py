@@ -70,10 +70,29 @@ class Person():
         day = date(2016, 5, 20)
         return ((day - birth).days/365)
 
-    """To compare"""
+    """Functions to compare"""
     def __cmp__(self, right):
         return cmp(self.age(), right.age())
 
+    def __gt__(self,other):
+        return self.age() > other.age()
+
+    def __lt__(self, other):
+        return self.age() < other.age()
+
+    def __ge__(self, other):
+        return self.age() >= other.age()
+
+    def __le__(self, other):
+        return self.age() <= other.age()
+
+    def __eq__(self, other):
+        return self.age() == other.age()
+
+    def __ne__(self, other):
+        return self.age() != other.age()
+
+    """json function"""
     def json(self):
         return {
         'id': self.get_id(),
@@ -83,7 +102,7 @@ class Person():
         'first_name': self.get_first_name(),
         'last_name': self.last_name,
         }
-
+    """Function Load from Json"""
     def load_from_json(self, json):
         if type(json) is not dict:
             raise Exception("json is not valid")
@@ -96,7 +115,7 @@ class Person():
         self.last_name = json['last_name']
 
 
-
+"""Baby Definition"""
 class Baby(Person):
     def can_run(self):
         return False
@@ -107,6 +126,7 @@ class Baby(Person):
     def can_vote(self):
         return False
 
+"""Teenager definition"""
 class Teenager(Person):
     def can_run(self):
         return True
@@ -117,6 +137,7 @@ class Teenager(Person):
     def can_vote(self):
         return False
 
+"""Adult definition"""
 class Adult(Person):
     def can_run(self):
         return True
@@ -127,7 +148,7 @@ class Adult(Person):
     def can_vote(self):
         return True
 
-
+"""Senior definition"""
 class Senior(Person):
     def can_run(self):
         return False
@@ -138,7 +159,7 @@ class Senior(Person):
     def can_vote(self):
         return True
 
-#
+"""Function save to file"""
 def save_to_file(list, filename):
     if not isfile(filename) or type(filename) is not str:
         raise Exception("filename is not valid or doesn't exist")
@@ -151,6 +172,7 @@ def save_to_file(list, filename):
             output.append(data)
         f.write(dumps(output))
 
+"""Function load from file"""
 def load_from_file(filename):
     if not isfile(filename) or type(filename) is not str:
         raise Exception("filename is not valid or doesn't exist")
