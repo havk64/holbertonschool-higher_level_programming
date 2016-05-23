@@ -41,6 +41,9 @@ class Person():
         if type(self.last_name) is not str:
             raise Exception("last_name is not a string")
 
+        assert type(self.is_married_to) is int
+        self.is_married_to = 0
+
 
     """Getter for first_name"""
     def get_first_name(self):
@@ -101,6 +104,7 @@ class Person():
         'date_of_birth': self.get_date_of_birth(),
         'first_name': self.get_first_name(),
         'last_name': self.last_name,
+        'is_married_to': self.is_married_to
         }
     """Function Load from Json"""
     def load_from_json(self, json):
@@ -113,6 +117,7 @@ class Person():
         self.__genre = json['genre']
         self.__eyes_color = json['eyes_color']
         self.last_name = json['last_name']
+        self.is_married_to = json['is_married_to']
 
 
 """Baby Definition"""
@@ -125,6 +130,24 @@ class Baby(Person):
         return True
     def can_vote(self):
         return False
+    def can_be_married(self):
+        return False
+    def is_married(self):
+        return self.is_married_to != 0
+    def divorce(self, p):
+        self.is_married_to = 0
+        p.is_married_to = 0
+    def just_married_with(self, p):
+        if (self.is_married_to != 0)  or (p.is_married_to !=0):
+            raise Exception("Already married")
+        if(not self.can_be_married()) or  (not p.can_be_married()):
+            raise Exception("Can't be married")
+        self.is_married_to = p.get_id()
+        p.is_married_to = self.get_id()
+        if(self.get_genre == 'Female'):
+            self.last_name = p.last_name
+        else:
+            p.last_name = self.last_name
 
 """Teenager definition"""
 class Teenager(Person):
@@ -136,6 +159,24 @@ class Teenager(Person):
         return True
     def can_vote(self):
         return False
+    def can_be_married(self):
+        return False
+    def is_married(self):
+        return self.is_married_to != 0
+    def divorce(self, p):
+        self.is_married_to = 0
+        p.is_married_to = 0
+    def just_married_with(self, p):
+        if (self.is_married_to != 0)  or (p.is_married_to !=0):
+            raise Exception("Already married")
+        if(not self.can_be_married()) or  (not p.can_be_married()):
+            raise Exception("Can't be married")
+        self.is_married_to = p.get_id()
+        p.is_married_to = self.get_id()
+        if(self.get_genre == 'Female'):
+            self.last_name = p.last_name
+        else:
+            p.last_name = self.last_name
 
 """Adult definition"""
 class Adult(Person):
@@ -147,6 +188,25 @@ class Adult(Person):
         return False
     def can_vote(self):
         return True
+    def can_be_married(self):
+        return True
+    def is_married(self):
+        return self.is_married_to != 0
+    def divorce(self, p):
+        self.is_married_to = 0
+        p.is_married_to = 0
+    def just_married_with(self, p):
+        if (self.is_married_to != 0)  or (p.is_married_to !=0):
+            raise Exception("Already married")
+        if(not self.can_be_married()) or  (not p.can_be_married()):
+            raise Exception("Can't be married")
+        self.is_married_to = p.get_id()
+        p.is_married_to = self.get_id()
+        if(self.get_genre == 'Female'):
+            self.last_name = p.last_name
+        else:
+            p.last_name = self.last_name
+
 
 """Senior definition"""
 class Senior(Person):
@@ -158,6 +218,26 @@ class Senior(Person):
         return False
     def can_vote(self):
         return True
+    def can_be_married(self):
+        return True
+    def is_married(self):
+        return self.is_married_to != 0
+    def divorce(self, p):
+        self.is_married_to = 0
+        p.is_married_to = 0
+    def just_married_with(self, p):
+        if (self.is_married_to != 0)  or (p.is_married_to !=0):
+            raise Exception("Already married")
+        if(not self.can_be_married()) or  (not p.can_be_married()):
+            raise Exception("Can't be married")
+        self.is_married_to = p.get_id()
+        p.is_married_to = self.get_id()
+        if(self.get_genre == 'Female'):
+            self.last_name = p.last_name
+        else:
+            p.last_name = self.last_name
+
+
 
 """Function save to file"""
 def save_to_file(list, filename):
