@@ -1,3 +1,4 @@
+from datetime import date
 
 """Class definition"""
 class Person():
@@ -18,7 +19,7 @@ class Person():
             if type(i) is not int:
                 raise Exception("date_of_birth is not a valid date")
 
-        if   date_of_birth[0] < 1 or date_of_birth[0] > 12 or date_of_birth[1] > 31 or date_of_birth[1] < 1 or date_of_birth[2] < 1800: # or 1 >= date_of_birth[1] >= 31 or 1 >= date_of_birth[2]:
+        if date_of_birth[0] < 1 or date_of_birth[0] > 12 or date_of_birth[1] > 31 or date_of_birth[1] < 1 or date_of_birth[2] < 1800:
                 raise Exception("date_of_birth is not a valid date(debug)")
 
         if type(genre) is not str or genre not in self.GENRES:
@@ -53,3 +54,19 @@ class Person():
     """Getter for genre"""
     def get_genre(self):
         return self.__genre
+
+    def __str__(self):
+        return self.__first_name + " " + self.last_name
+
+    def is_male(self):
+        return self.__genre == "Male"
+
+    def age(self):
+        birth = date(self.__date_of_birth[2], self.__date_of_birth[0], self.__date_of_birth[1])
+        day = date(2016, 5, 20)
+        return ((day - birth).days/365)
+
+    def __cmp__(self, right):
+        return cmp(self.age(), right.age())
+
+    

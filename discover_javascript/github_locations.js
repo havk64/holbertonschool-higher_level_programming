@@ -10,7 +10,7 @@ const options = {
   }
 }
 
-const streamToString = (stream, cb) => {
+var streamToString = (stream, cb) => {
   const chunks = [];
   stream.on('data', (chunk) => {
     chunks.push(chunk);
@@ -21,6 +21,7 @@ const streamToString = (stream, cb) => {
 }
 
 const req = https.request(options, (res) => {
+    console.time("dbsave");
 	streamToString(res, (data) => {
 		const gitObj = JSON.parse(data);
         const result = [];
@@ -45,6 +46,7 @@ const compute = (result) => {
             streamToString(res, (data) => {
                 data = JSON.parse(data);
                 final.push({"full_name": user.fullName, "location": data.location});
+		console.log(user.fullName);
                 complete();
             });
         });
@@ -55,12 +57,14 @@ const compute = (result) => {
     });
     const complete = () => {
         if(final.length == 30){
-            fs.writeFile("/tmp/23", JSON.stringify(final), (err) => {
+	    console.log(JSON.stringify(final));
+	    console.timeEnd("dbsave");
+            /*fs.writeFile("/tmp/23", JSON.stringify(final), (err) => {
                 if(err) {
                     console.log(err);
                 }
                 console.log("The file was saved!");
-            });
+            });*/
         } 
     }
 };

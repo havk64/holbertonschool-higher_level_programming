@@ -13,7 +13,7 @@ request_headers = {
 url = 'https://api.github.com'  # Base URL
 path = '/search/repositories'   # Path for the first call
 query = {                       # Query for first call
-    'q': 'language:python',
+    'q': 'language:rust',
     'sort':'stars',
     'order':'desc'
 }
@@ -54,7 +54,7 @@ def get_data():
     python_masters = []
     for user in json_data['items']:
         python_masters.append(get_location(user))
-    print dumps(python_masters, sort_keys=True)
+    print dumps(python_masters, sort_keys=True, indent=4)
 
 # Start it!!!
 get_data()
