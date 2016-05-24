@@ -1,12 +1,12 @@
 // ===----------------------------------------------------------------===//
-//            Project "Swift" by Paulin Laroche - Task 2
+//            Project "Swift" by Paulin Laroche - Task 3
 //          by Alexandro de Oliveira, for Holberton School.
 // ===----------------------------------------------------------------===//
 
 /**
- * @discussion: This Function returns a factorial of a given number.
- * @params: Accepts an Integer as parameter.
- * @returns: returns the factorial of the given number.
+ * @discussion: This Function returns the first longest word in a sentence.
+ * @params: Accepts a String as parameter.
+ * @returns: returns the the most
  */
 func longest_word(text: String) -> (String) {
   let splited = text.characters.split{$0 == " "}.map(String.init)

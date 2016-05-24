@@ -1,7 +1,7 @@
-// ===---------------------------------------===//
-// Project "Swift" by Paulin Laroche - Task 0
-// by Alexandro de Oliveira, for Holberton School.
-// ===---------------------------------------===//
+// ===-------------------------------------------------------------------===//
+//            Project "Swift" by Paulin Laroche - Task 0
+//          by Alexandro de Oliveira, for Holberton School.
+// ===-------------------------------------------------------------------===//
 
 /**
  * @discussion Function Reverse accepts reverses a string given as parameter.
