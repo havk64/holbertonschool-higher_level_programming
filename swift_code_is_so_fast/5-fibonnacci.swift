@@ -21,7 +21,7 @@ func memoize<T: Hashable, U>(body: ((T)->U, T) -> U) -> (T)->U {
 }
 
 /**
- * @discussion: Fibonacci uses memoize function to improve the performance of recursiveness.
+ * @discussion: Fibonacci uses memoize function which improves the performance of its recursive code.
  * @params: Accepts a number as parameter.
  * @returns: returns the respective fibonacci number.
  */

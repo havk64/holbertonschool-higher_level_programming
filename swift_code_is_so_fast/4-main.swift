@@ -4,9 +4,9 @@
 // ===----------------------------------------------------------------===//
 
 /**
- * @discussion: This Function returns the maximum value of an array.
- * @params: Accepts a Integer as parameter.
- * @returns: returns the the highest value.
+ * @discussion: The closure returns the maximum value of an array.
+ * @params: Accepts an array as parameter.
+ * @returns: returns the highest value.
  */
 
 var numbers = [4, 7, 1, 9, 6, 5, 6, 9]
