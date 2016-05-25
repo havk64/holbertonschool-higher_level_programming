@@ -5,11 +5,12 @@ import (
 	"net/url"
 )
 
-//===--Function customURL()------------------------------------------------===//
-// customURL() is used to define a custom URL.
-// I chose to split each item in order to have more control on each item.
+//===--Function parsedURL()------------------------------------------------===//
+// parsedURL() is used to define the URL.
+// I chose to split each item(parse) in order to have more control on them.
+// To obtain this result you can use url.Parse(URL) in a raw URL.
 //===----------------------------------------------------------------------===//
-func customURL() *url.URL {
+func parsedURL() *url.URL {
 
 	/* We return the reference to url.URL struct, which has the right format to *
 	 * stringify the Url using the encoded reference to url.Values as RawQuery. */

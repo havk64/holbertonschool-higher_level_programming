@@ -46,7 +46,7 @@ func main() {
 func vote(n int) {
 	start := time.Now()
 	client := &http.Client{}
-	u := customURL()
+	u := parsedURL()
 	data := clientPost()
 	req, err := http.NewRequest("POST", u.String(), strings.NewReader(data.Encode()))
 	check(err)
