@@ -8,12 +8,11 @@ import (
 //===--Function parsedURL()------------------------------------------------===//
 // parsedURL() is used to define the URL.
 // I chose to split each item(parse) in order to have more control on them.
-// To obtain this result you can use url.Parse(URL) in a raw URL.
+// To obtain this result you can use url.Parse(URL) in a raw URL, which will
+// return an object of type url.URL that is defined by a struct.
 //===----------------------------------------------------------------------===//
 func parsedURL() *url.URL {
 
-	/* We return the reference to url.URL struct, which has the right format to *
-	 * stringify the Url using the encoded reference to url.Values as RawQuery. */
 	return &url.URL{
 		Scheme:   "http",
 		Opaque:   "",
