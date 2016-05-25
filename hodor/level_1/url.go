@@ -5,6 +5,10 @@ import (
 	"net/url"
 )
 
+func myValue() string {
+	return "eee265b61a8b52529dc5e3865a5b5ddffcb69bf0"
+}
+
 //===--Function parsedURL()------------------------------------------------===//
 // parsedURL() is used to define the URL.
 // I chose to split each item(parse) in order to have more control on them.
@@ -28,7 +32,7 @@ func parsedURL() *url.URL {
 //===--Function clientPost()-----------------------------------------------===//
 // clientPost() is used to fill the form for que POST request.
 //===----------------------------------------------------------------------===//
-func clientPost(value string) *url.Values {
+func clientPost() *url.Values {
 	post := &url.Values{ // Custom Query created based in the the type url.Values,
 		"id": []string{ // that is basically: map[string][]string
 			"23",
@@ -37,7 +41,7 @@ func clientPost(value string) *url.Values {
 			"Submit",
 		},
 		"key": []string{
-			value,
+			myValue(),
 		},
 	}
 	return post
@@ -50,10 +54,13 @@ func clientPost(value string) *url.Values {
 func customHeader() http.Header {
 	return http.Header{
 		"User-Agent": []string{
-			"Testing",
+			"havk64 - Golang async Post Requests",
 		},
 		"Content-type": []string{
 			"application/x-www-form-urlencoded",
+		},
+		"Cookie": []string{
+			"HoldTheDoor=" + myValue(),
 		},
 	}
 }
