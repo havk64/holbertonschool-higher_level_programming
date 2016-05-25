@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"strings"
 	"sync"
@@ -15,7 +14,7 @@ import (
 //===----------------------------------------------------------------------===//
 func check(e error) {
 	if e != nil {
-		log.Fatal(e)
+		fmt.Println(e)
 	}
 }
 
@@ -28,6 +27,7 @@ func check(e error) {
 func main() {
 	start := time.Now()
 	var wg sync.WaitGroup
+	vote := request()
 	for i := 0; i < 1024; i++ {
 		wg.Add(1)
 		time.Sleep(50 * time.Millisecond) // Makes one request each 50 milliseconds(to avoid too many open files)
@@ -43,15 +43,18 @@ func main() {
 //===--Function vote()-----------------------------------------------------===//
 // vote() gets makes the post request using functions defined in url.go file.
 //===----------------------------------------------------------------------===//
-func vote(n int) {
+func request() func(int) {
 	u := parsedURL()
 	client := &http.Client{}
 	data := clientPost()
-	req, err := http.NewRequest("POST", u.String(), strings.NewReader(data.Encode()))
-	check(err)
-	req.Header = customHeader()
-	resp, error := client.Do(req)
-	check(error)
-	defer resp.Body.Close()
-	defer fmt.Printf("Vote number: %d\n", n)
+
+	return func(n int) {
+		req, err := http.NewRequest("POST", u.String(), strings.NewReader(data.Encode()))
+		check(err)
+		req.Header = customHeader()
+		resp, error := client.Do(req)
+		check(error)
+		defer resp.Body.Close()
+		defer fmt.Printf("Vote number: %d\n", n)
+	}
 }
