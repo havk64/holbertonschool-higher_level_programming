@@ -30,8 +30,12 @@ func main() {
 	var wg sync.WaitGroup
 	for i := 0; i < 1024; i++ {
 		wg.Add(1)
-		time.Sleep(100 * time.Millisecond) // Makes one request each 100 milliseconds
-	} // 																		Otherwise we can break the server, hehe!
+		time.Sleep(100 * time.Millisecond) // Makes one request each 100 milliseconds(to avoid too many open files)
+		go func(i int) {                   // Starting the goroutines.
+			defer wg.Done()
+			vote(i)
+		}(i)
+	}
 	wg.Wait()
 	defer fmt.Println("1024 votes confirmed in user 23 in: ", time.Since(start))
 }
@@ -39,7 +43,7 @@ func main() {
 //===--Function vote()-----------------------------------------------------===//
 // vote() gets makes the post request using functions defined in url.go file.
 //===----------------------------------------------------------------------===//
-func vote(n int, wg *sync.WaitGroup) {
+func vote(n int) {
 	start := time.Now()
 	client := &http.Client{}
 	u := customURL()
@@ -51,5 +55,4 @@ func vote(n int, wg *sync.WaitGroup) {
 	check(err)
 	defer resp.Body.Close()
 	defer fmt.Printf("Vote #%d at %d\n", n, time.Since(start))
-	defer wg.Done()
 }
