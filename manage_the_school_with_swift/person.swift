@@ -62,6 +62,34 @@ class Student: Person, Classify {
 }
 
 /**
+* @discussion Declaring the class School.
+*/
+class School {
+    var name = ""
+    var list_persons: [Person] = []
+
+    init(name: String) {
+        self.name = name
+    }
+
+    func addStudent(p: Person) -> Bool {
+        if p is Student {
+            list_persons.append(p)
+            return true
+        }
+        return false
+    }
+
+    func addMentor(p: Person) -> Bool {
+        if p is Mentor {
+            list_persons.append(p)
+            return true
+        }
+        return false
+    }
+}
+
+/**
 * @discussion Declaring the protocol Classify.
 */
 protocol Classify {
