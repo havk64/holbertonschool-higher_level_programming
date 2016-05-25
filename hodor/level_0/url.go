@@ -47,16 +47,10 @@ func clientPost() *url.Values {
 func customHeader() http.Header {
 	return http.Header{
 		"User-Agent": []string{
-			"Holberton_School - Using Golang",
-		},
-		"Accept": []string{
-			"text/html,application/xhtml+xml,applxml;q=0.9,image/webp,*/*;q=0.8",
+			"by Alexandro for Holberton_School - Using Golang",
 		},
 		"Content-type": []string{
 			"application/x-www-form-urlencoded",
-		},
-		"Upgrade-Insecure-Requests": []string{
-			"1",
 		},
 	}
 }
