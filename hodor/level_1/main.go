@@ -27,7 +27,7 @@ func check(e error) {
 func main() {
 	start := time.Now()
 	var wg sync.WaitGroup
-	vote := request()
+	vote := connect() // Assigning the Closure to the variable vote.
 	for i := 0; i < 1024; i++ {
 		wg.Add(1)
 		time.Sleep(50 * time.Millisecond) // Makes one request each 50 milliseconds(to avoid too many open files)
@@ -40,10 +40,11 @@ func main() {
 	defer fmt.Println("1024 votes confirmed in user 23 in: ", time.Since(start))
 }
 
-//===--Function vote()-----------------------------------------------------===//
-// vote() gets makes the post request using functions defined in url.go file.
+//===--Function connect()--------------------------------------------------===//
+// connect() saves some repetitive data in a "Closure" that will be returned
+// and once assigned to a variable can be used to make the post request.
 //===----------------------------------------------------------------------===//
-func request() func(int) {
+func connect() func(int) {
 	u := parsedURL()
 	client := &http.Client{}
 	data := clientPost()
