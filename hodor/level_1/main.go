@@ -30,7 +30,7 @@ func main() {
 	vote := connect() // Assigning the Closure to the variable vote.
 	for i := 0; i < 1024; i++ {
 		wg.Add(1)
-		time.Sleep(50 * time.Millisecond) // Makes one request each 50 milliseconds(to avoid too many open files)
+		time.Sleep(25 * time.Millisecond) // Makes one request each 25 milliseconds(to avoid too many open files)
 		go func(i int) {                  // Starting the goroutines.
 			defer wg.Done() // Defer when it's done.
 			vote(i)         // Calling the function to make the request.
@@ -49,7 +49,7 @@ func connect() func(int) {
 	client := &http.Client{}
 	data := clientPost()
 
-	return func(n int) {
+	return func(n int) { // This closure will "remember" its environment and optimize the request.
 		req, err := http.NewRequest("POST", u.String(), strings.NewReader(data.Encode()))
 		check(err)
 		req.Header = customHeader()
