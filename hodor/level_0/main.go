@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"strings"
 	"sync"
@@ -15,7 +14,7 @@ import (
 //===----------------------------------------------------------------------===//
 func check(e error) {
 	if e != nil {
-		log.Fatal(e)
+		fmt.Println(e)
 	}
 }
 
@@ -28,9 +27,10 @@ func check(e error) {
 func main() {
 	start := time.Now()
 	var wg sync.WaitGroup
+	vote := connect()
 	for i := 0; i < 1024; i++ {
 		wg.Add(1)
-		time.Sleep(100 * time.Millisecond) // Makes one request each 100 milliseconds(to avoid too many open files)
+		time.Sleep(25 * time.Millisecond) // Makes one request each 25 milliseconds(to avoid too many open files)
 		go func(i int) {                   // Starting the goroutines.
 			defer wg.Done()
 			vote(i)
@@ -40,19 +40,22 @@ func main() {
 	defer fmt.Println("1024 votes confirmed in user 23 in: ", time.Since(start))
 }
 
-//===--Function vote()-----------------------------------------------------===//
-// vote() gets makes the post request using functions defined in url.go file.
+//===--Function connect()-----------------------------------------------------===//
+// connect() saves some repetitive data in a "Closure" that will be returned
+// and once assigned to a variable can be used to make the post request.
 //===----------------------------------------------------------------------===//
-func vote(n int) {
-	start := time.Now()
+func connect() func(int) {
 	client := &http.Client{}
 	u := parsedURL()
 	data := clientPost()
-	req, err := http.NewRequest("POST", u.String(), strings.NewReader(data.Encode()))
-	check(err)
-	req.Header = customHeader()
-	resp, err := client.Do(req)
-	check(err)
-	defer resp.Body.Close()
-	defer fmt.Printf("Vote #%d at %d\n", n, time.Since(start))
+
+	return func(n int) { // This closure will "remember" its environment and optimize the request.
+		req, err := http.NewRequest("POST", u.String(), strings.NewReader(data.Encode()))
+		check(err)
+		req.Header = customHeader()
+		resp, err := client.Do(req)
+		check(err)
+		defer resp.Body.Close()
+		defer fmt.Printf("Vote number: %d \n", n)
+	}
 }
