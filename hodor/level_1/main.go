@@ -48,8 +48,9 @@ func connect() func(int) {
 	u := parsedURL()
 	client := &http.Client{}
 	data := clientPost()
-
-	return func(n int) { // This closure will "remember" its environment and optimize the request.
+	// This closure will "remember" its environment and optimize the request
+	// as the client will called just once keeping the connection 'alive'.
+	return func(n int) {
 		req, err := http.NewRequest("POST", u.String(), strings.NewReader(data.Encode()))
 		check(err)
 		req.Header = customHeader()
