@@ -1,9 +1,9 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"net/http"
-	"strings"
 	"sync"
 	"time"
 )
@@ -49,9 +49,9 @@ func connect() func(int) {
 	client := &http.Client{}
 	data := clientPost()
 	// This closure will "remember" its environment and optimize the request
-	// as the client will called just once keeping the connection 'alive'.
+	// as the client will be called just once, keeping the connection 'alive'.
 	return func(n int) {
-		req, err := http.NewRequest("POST", u.String(), strings.NewReader(data.Encode()))
+		req, err := http.NewRequest("POST", u.String(), bytes.NewBufferString(data.Encode()))
 		check(err)
 		req.Header = customHeader()
 		resp, error := client.Do(req)
