@@ -41,5 +41,7 @@ func post() {
     task.resume()
 }
 
-//Calling the function.
-post()
+//Calling the function 1024 times.
+for i in 0 ..< 1024 {
+    post()
+}
