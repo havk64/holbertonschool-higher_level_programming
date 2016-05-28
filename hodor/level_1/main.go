@@ -19,8 +19,8 @@ func check(e error) {
 }
 
 //===--Function main()-----------------------------------------------------===//
-// main() calls the function vote 1024 times waiting 100 milliseconds to avoid
-// to have too many open files all at once.
+// In the main() we calls the function vote() 1024 times waiting 25 milliseconds
+// after each request in order to avoid to have too many open files all at once.
 // It uses goroutines to make asyncronous requests and WaitGroup to syncronize
 // all requests and return at the end.
 //===----------------------------------------------------------------------===//
