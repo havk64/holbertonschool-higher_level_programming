@@ -2,6 +2,11 @@
 import Foundation
 
 //===----------------------------------------------------------------------===//
+// Swift script to solve Hodor Level 0 Project by Julien Barbier - Holberton
+// School.
+// Next step is to create an iOS app to automatize the vote process...
+// and be able to vote from anywhere! \o/ \o/ \o/
+//===----------------------------------------------------------------------===//
 // For the purpose of understand how the requests works it's interesting to
 // test it in the XCode Playground.
 // Just add this two lines at the beginning
