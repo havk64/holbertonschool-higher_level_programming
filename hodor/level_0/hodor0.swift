@@ -9,10 +9,12 @@ import Foundation
 //===----------------------------------------------------------------------===//
 // For the purpose of understand how the requests works it's interesting to
 // test it in the XCode Playground.
-// Just add this two lines at the beginning
-// of XCode Playground:
+// For that just add this two lines at the beginning of XCode Playground:
+//
 // > import XCPlaygroung
 // > XCPlaygroundPage.currentPage.needsIndefiniteExecution = true
+//
+// ...and paste the code below in the Playground window.
 //===----------------------------------------------------------------------===//
 // Function post used to make the http requests:
 //===----------------------------------------------------------------------===//
