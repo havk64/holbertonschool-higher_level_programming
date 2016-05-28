@@ -1,12 +1,14 @@
 
 import Foundation
 
-//===----------------------------------------------------------------------===//
+//===---------------------------------------------------------------------------===//
 // Swift script to solve Hodor Level 0 Project by Julien Barbier - Holberton
 // School.
+// Warning: by now it works just in the XCode Playground! Instructions below.
+//
 // Next step is to create an iOS app to automatize the vote process...
 // and be able to vote from anywhere! \o/ \o/ \o/
-//===----------------------------------------------------------------------===//
+//===---------------------------------------------------------------------------===//
 // For the purpose of understand how the requests works it's interesting to
 // test it in the XCode Playground.
 // For that just add this two lines at the beginning of XCode Playground:
@@ -15,9 +17,11 @@ import Foundation
 // > XCPlaygroundPage.currentPage.needsIndefiniteExecution = true
 //
 // ...and paste the code below in the Playground window.
-//===----------------------------------------------------------------------===//
+//===---------------------------------------------------------------------------===//
+
+//===---------------------------------------------------------------------------===//
 // Function post used to make the http requests:
-//===----------------------------------------------------------------------===//
+//===---------------------------------------------------------------------------===//
 func post() {
     //Defining the URL to be requested:
     let url = NSURL(string: "http://173.246.108.142/level0.php")
