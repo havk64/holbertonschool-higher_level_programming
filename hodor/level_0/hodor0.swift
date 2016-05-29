@@ -1,14 +1,14 @@
 
 import Foundation
 
-//===---------------------------------------------------------------------------===//
+//===-------Description:--------------------------------------------------------===//
 // Swift script to solve Hodor Level 0 Project by Julien Barbier - Holberton
 // School.
 // Working 100% ! ! ! (not Asyncronous yet, though)
 //
 // Next step is to create an iOS app to automatize the vote process...
 // and be able to vote from anywhere! \o/ \o/ \o/
-//===---------------------------------------------------------------------------===//
+//===------Xcode Playground-----------------------------------------------------===//
 // For the purpose of understand how the requests works it's interesting to
 // test it in the XCode Playground.
 // For that matter just add this two lines at the beginning of XCode Playground:
@@ -19,7 +19,7 @@ import Foundation
 // ...and paste the code below in the Playground window.
 //===---------------------------------------------------------------------------===//
 
-//===---------------------------------------------------------------------------===//
+//===-----Function post()-------------------------------------------------------===//
 // Function post used to make the http requests:
 //===---------------------------------------------------------------------------===//
 func post() {
@@ -35,6 +35,7 @@ func post() {
     request.HTTPMethod = "POST"
     //Encoding the parameters to the HTTPBody.
     request.HTTPBody = param.dataUsingEncoding(NSUTF8StringEncoding)
+
     //Setting the headers:
     request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
     request.setValue("havk64 - Swift Requests",  forHTTPHeaderField: "User-Agent") // Use your own User-Agent setting.
