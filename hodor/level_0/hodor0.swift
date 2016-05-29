@@ -59,6 +59,7 @@ func post() {
 //Calling the function 1024 times.
 for i in 0 ..< 1024 {
     post()
-    usleep(150000) // <<< This is fundamental to compute the vote ! ! !
-    print("BOOOOOOMMMM ! ! !") // A là Julien Barbier, hehe!
+    usleep(200000) // <<< This is fundamental to compute the vote ! ! ! (It waits 200 milliseconds before the new request.)
 }
+
+print("BOOOOOOMMMM ! ! !") // A là Julien Barbier, hehe!
