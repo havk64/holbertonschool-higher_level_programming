@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		A68B33931CFBA2680084E99C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B33921CFBA2680084E99C /* AppDelegate.swift */; };
-		A68B33951CFBA2680084E99C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B33941CFBA2680084E99C /* ViewController.swift */; };
 		A68B33981CFBA2680084E99C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68B33961CFBA2680084E99C /* Main.storyboard */; };
 		A68B339A1CFBA2680084E99C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68B33991CFBA2680084E99C /* Assets.xcassets */; };
 		A68B339D1CFBA2680084E99C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68B339B1CFBA2680084E99C /* LaunchScreen.storyboard */; };
 		A68B33A81CFBA2680084E99C /* SiliconValleyCompaniesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B33A71CFBA2680084E99C /* SiliconValleyCompaniesTests.swift */; };
 		A68B33B31CFBA2680084E99C /* SiliconValleyCompaniesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B33B21CFBA2680084E99C /* SiliconValleyCompaniesUITests.swift */; };
 		A68B33C21CFBA3B30084E99C /* TechCompaniesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B33C11CFBA3B30084E99C /* TechCompaniesHelper.swift */; };
+		A68B33C91CFBAE8B0084E99C /* CompaniesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B33C81CFBAE8B0084E99C /* CompaniesListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +37,6 @@
 /* Begin PBXFileReference section */
 		A68B338F1CFBA2680084E99C /* SiliconValleyCompanies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SiliconValleyCompanies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68B33921CFBA2680084E99C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A68B33941CFBA2680084E99C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A68B33971CFBA2680084E99C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A68B33991CFBA2680084E99C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A68B339C1CFBA2680084E99C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		A68B33B21CFBA2680084E99C /* SiliconValleyCompaniesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiliconValleyCompaniesUITests.swift; sourceTree = "<group>"; };
 		A68B33B41CFBA2680084E99C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A68B33C11CFBA3B30084E99C /* TechCompaniesHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechCompaniesHelper.swift; sourceTree = "<group>"; };
+		A68B33C81CFBAE8B0084E99C /* CompaniesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompaniesListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +99,9 @@
 		A68B33911CFBA2680084E99C /* SiliconValleyCompanies */ = {
 			isa = PBXGroup;
 			children = (
+				A68B33C31CFBAAD30084E99C /* ViewControllers */,
 				A68B33C01CFBA2E10084E99C /* Models */,
 				A68B33921CFBA2680084E99C /* AppDelegate.swift */,
-				A68B33941CFBA2680084E99C /* ViewController.swift */,
 				A68B33961CFBA2680084E99C /* Main.storyboard */,
 				A68B33991CFBA2680084E99C /* Assets.xcassets */,
 				A68B339B1CFBA2680084E99C /* LaunchScreen.storyboard */,
@@ -134,6 +134,14 @@
 				A68B33C11CFBA3B30084E99C /* TechCompaniesHelper.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		A68B33C31CFBAAD30084E99C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A68B33C81CFBAE8B0084E99C /* CompaniesListViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,8 +275,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A68B33951CFBA2680084E99C /* ViewController.swift in Sources */,
 				A68B33931CFBA2680084E99C /* AppDelegate.swift in Sources */,
+				A68B33C91CFBAE8B0084E99C /* CompaniesListViewController.swift in Sources */,
 				A68B33C21CFBA3B30084E99C /* TechCompaniesHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,10 +419,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SiliconValleyCompanies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alexandro.SiliconValleyCompanies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SiliconValleyCompanies/SiliconValleyCompanies-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -422,10 +433,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SiliconValleyCompanies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alexandro.SiliconValleyCompanies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SiliconValleyCompanies/SiliconValleyCompanies-Bridging-Header.h";
 			};
 			name = Release;
 		};
