@@ -29,6 +29,7 @@ class ViewController: UIViewController {
         }
     }
     
+
     @IBAction func clickCoinButton(sender: AnyObject) {
         print("Tap!")
         self.taps_done += 1
@@ -59,8 +60,6 @@ class ViewController: UIViewController {
     }
     
 
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
