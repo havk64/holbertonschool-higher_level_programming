@@ -4,14 +4,14 @@ import Foundation
 //===---------------------------------------------------------------------------===//
 // Swift script to solve Hodor Level 0 Project by Julien Barbier - Holberton
 // School.
-// Warning: by now it works just in the XCode Playground! Instructions below.
+// Working 100% ! ! ! (not Asyncronous yet, though)
 //
 // Next step is to create an iOS app to automatize the vote process...
 // and be able to vote from anywhere! \o/ \o/ \o/
 //===---------------------------------------------------------------------------===//
 // For the purpose of understand how the requests works it's interesting to
 // test it in the XCode Playground.
-// For that just add this two lines at the beginning of XCode Playground:
+// For that matter just add this two lines at the beginning of XCode Playground:
 //
 // > import XCPlaygroung
 // > XCPlaygroundPage.currentPage.needsIndefiniteExecution = true
@@ -26,7 +26,7 @@ func post() {
     //Defining the URL to be requested:
     let url = NSURL(string: "http://173.246.108.142/level0.php")
     //Defining the POST request parameters:
-    let param = "id={your id here}&holdthedoor=Submit"
+    let param = "id=23&holdthedoor=Submit" // To test it replace the "23" with your own id ;-)
     //Initializing the session:
     let session = NSURLSession.sharedSession()
     //The NSMutableURLRequest allow us to change its parameters later(header, values):
@@ -37,22 +37,28 @@ func post() {
     request.HTTPBody = param.dataUsingEncoding(NSUTF8StringEncoding)
     //Setting the headers:
     request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-    request.setValue("{Your custom User-Agent here}",  forHTTPHeaderField: "User-Agent")
-
+    request.setValue("havk64 - Swift Requests",  forHTTPHeaderField: "User-Agent") // Use your own User-Agent setting.
+    //print(request.allHTTPHeaderFields!)
     let task = session.dataTaskWithRequest(request, completionHandler: { data, response, error -> Void in
         guard data != nil else {
             print("no data found: \(error)")
             return
         }
-        print("Response: \(response)")
-        let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
-        print("Body: \(strData)")
+        // To print the http response uncomment the line below: << Response
+        // print("Response: \(response)")
+
+        // To print the response.Body(html) uncomment the two lines below: << Response Body
+        // let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+        // print("Body: \(strData)")
+
     })
-    // Initiating the connection:
+    // Making the request:
     task.resume()
 }
 
 //Calling the function 1024 times.
 for i in 0 ..< 1024 {
     post()
+    usleep(150000) // <<< This is fundamental to compute the vote ! ! !
+    print("BOOOOOOMMMM ! ! !") // A là Julien Barbier, hehe!
 }
