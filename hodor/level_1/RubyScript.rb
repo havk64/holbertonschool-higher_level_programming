@@ -29,7 +29,16 @@ params = URI.encode_www_form({
     'holdthedoor' => "submit",
     'key' => cookie
 })
-# Making the POST request:
-resp, data = http.post(uri.path, params, headers)
-# Optionally printing the response object hash:
-puts resp.to_hash
+
+# Processing the POST request:
+votes = 0 # A vote counter
+(1 << 10).times {  # This result of this bitwise operatation(1 << 10) is "1024"
+    resp, data = http.post(uri.path, params, headers)
+    unless resp.message != 'OK'
+        puts "Vote number: #{votes += 1}"
+        # Optionally printing the response object hash:
+        #puts "Headers: #{resp.to_hash.inspect}"
+    else
+        puts "Connection error, vote not computed..."
+    end
+}
