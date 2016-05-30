@@ -45,6 +45,14 @@ func post() {
             print("no data found: \(error)")
             return
         }
+        if let httpResponse = response as? NSHTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    counter += 1
+                    print("Vote numer: \(counter)")
+                } else {
+                    print("Connection error... (vote not computed!)")
+                }
+        }
         // To print the http response uncomment the line below: << Response
         // print("Response: \(response)")
 
@@ -56,11 +64,13 @@ func post() {
     // Making the request:
     task.resume()
 }
-
+// Variable counter is used to count each valid vote.
+var counter = 0
+let votes = (1 << 10) // The result of this bitwise operatation(1 << 10) is "1024"
 //Calling the function 1024 times.
-for i in 0 ..< 1024 {
+for i in 0 ..< votes {
     post()
-    usleep(200000) // <<< This is fundamental to compute the vote ! ! ! (It waits 200 milliseconds before the new request.)
+    usleep(500000) // <<< This is fundamental to compute the vote ! ! ! (It waits 500 milliseconds before the new request.)
 }
 
 print("BOOOOOOMMMM ! ! !") // A là Julien Barbier, hehe!
