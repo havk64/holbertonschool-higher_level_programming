@@ -9,8 +9,6 @@
 import UIKit
 
 class CompaniesListViewController: UITableViewController {
-    
-    let companiesList: [String] = TechCompaniesHelper.getTechCompanies()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,25 +29,23 @@ class CompaniesListViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return companiesList.count
+        return 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return companiesList.count
+        return 0
     }
 
-    
+    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("CompanyCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        cell.textLabel?.text = companiesList[indexPath.row]
-        cell.detailTextLabel?.text = companiesList[indexPath.row] == "Holberton" ? "I love studying" : "I love working"
+        // Configure the cell...
 
         return cell
     }
- 
+    */
 
     /*
     // Override to support conditional editing of the table view.
