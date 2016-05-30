@@ -17,7 +17,7 @@ uri = URI.parse("http://173.246.108.142/level0.php")
 http = Net::HTTP.new(uri.host, uri.port)
 # Setting the http request headers:
 headers = {
-    'User-Agent' => 'havk64 - Ruby Requests',
+    'User-Agent' => 'Ruby Script - Alexandro de Oliveira',
     'Content-Type' => 'application/x-www-form-urlencoded'
 }
 # Setting POST request parameters:
@@ -25,7 +25,15 @@ params = URI.encode_www_form({
     'id' => "23",
     'holdthedoor' => "submit"
 })
-# Making the POST request:
-resp, data = http.post(uri.path, params, headers)
-# Optionally printing the response object hash:
-puts resp.to_hash
+# Processing the POST request:
+votes = 0 # A vote counter
+(1 << 4).times {  # This result of this bitwise operatation(1 << 4) is "1024"
+    resp, data = http.post(uri.path, params, headers)
+    unless resp.message != 'OK'
+        puts "Vote number: #{votes += 1}"
+        # Optionally printing the response object hash:
+        #puts "Headers: #{resp.to_hash.inspect}"
+    else
+        puts "Connection error, vote not computed..."
+    end
+}
