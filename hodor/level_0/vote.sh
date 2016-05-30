@@ -2,7 +2,7 @@
 
 # ===-----------------------------------------------------------------------------===
 # Solution in Shell Script for Hodor Project by Julien Barbier - Holberton School
-# Using curl command and its default 'keep-alive' connection.
+# Using curl command taking advantage of its default 'keep-alive' connection.
 # If you want to see more details about each request replace the "s" option with "v"
 # right after the 'curl' command.	
 # ===-----------------------------------------------------------------------------===
