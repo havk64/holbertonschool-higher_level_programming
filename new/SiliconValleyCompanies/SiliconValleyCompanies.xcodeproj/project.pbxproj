@@ -14,6 +14,8 @@
 		A68B33E11CFBCBAB0084E99C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A68B33DF1CFBCBAB0084E99C /* LaunchScreen.storyboard */; };
 		A68B33EC1CFBCBAB0084E99C /* SiliconValleyCompaniesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B33EB1CFBCBAB0084E99C /* SiliconValleyCompaniesTests.swift */; };
 		A68B33F71CFBCBAB0084E99C /* SiliconValleyCompaniesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B33F61CFBCBAB0084E99C /* SiliconValleyCompaniesUITests.swift */; };
+		A68B34061CFBCBF10084E99C /* TechCompaniesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B34051CFBCBF10084E99C /* TechCompaniesHelper.swift */; };
+		A68B340D1CFBD0B50084E99C /* CompaniesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B340C1CFBD0B50084E99C /* CompaniesListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		A68B33F21CFBCBAB0084E99C /* SiliconValleyCompaniesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SiliconValleyCompaniesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68B33F61CFBCBAB0084E99C /* SiliconValleyCompaniesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiliconValleyCompaniesUITests.swift; sourceTree = "<group>"; };
 		A68B33F81CFBCBAB0084E99C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A68B34051CFBCBF10084E99C /* TechCompaniesHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechCompaniesHelper.swift; sourceTree = "<group>"; };
+		A68B340C1CFBD0B50084E99C /* CompaniesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompaniesListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 		A68B33D51CFBCBAA0084E99C /* SiliconValleyCompanies */ = {
 			isa = PBXGroup;
 			children = (
+				A68B34071CFBCC910084E99C /* ViewControllers */,
+				A68B34041CFBCBC60084E99C /* Models */,
 				A68B33D61CFBCBAA0084E99C /* AppDelegate.swift */,
 				A68B33D81CFBCBAB0084E99C /* ViewController.swift */,
 				A68B33DA1CFBCBAB0084E99C /* Main.storyboard */,
@@ -123,6 +129,22 @@
 				A68B33F81CFBCBAB0084E99C /* Info.plist */,
 			);
 			path = SiliconValleyCompaniesUITests;
+			sourceTree = "<group>";
+		};
+		A68B34041CFBCBC60084E99C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A68B34051CFBCBF10084E99C /* TechCompaniesHelper.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		A68B34071CFBCC910084E99C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A68B340C1CFBD0B50084E99C /* CompaniesListViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +280,8 @@
 			files = (
 				A68B33D91CFBCBAB0084E99C /* ViewController.swift in Sources */,
 				A68B33D71CFBCBAA0084E99C /* AppDelegate.swift in Sources */,
+				A68B340D1CFBD0B50084E99C /* CompaniesListViewController.swift in Sources */,
+				A68B34061CFBCBF10084E99C /* TechCompaniesHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
