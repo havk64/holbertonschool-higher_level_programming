@@ -25,7 +25,7 @@ params = URI.encode_www_form({
     'id' => "23",
     'holdthedoor' => "submit"
 })
-# Processing the POST request:
+# Processing the POST requests:
 votes = 0 # A vote counter
 (1 << 10).times {  # This result of this bitwise operatation(1 << 10) is "1024"
     resp, data = http.post(uri.path, params, headers)
