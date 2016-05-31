@@ -11,7 +11,9 @@ URL=http://173.246.108.142/level0.php
 AGENT='havk64 - Curl requests'
 ID='id=23'
 COUNT=0
-VOTES=1024
+VOTES=$((1 << 4)) # Bitwise operation which results in 1024.
+
+
 
 ### Voting 1024 times:
 while [ $COUNT -lt $VOTES ]

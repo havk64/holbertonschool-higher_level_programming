@@ -1,29 +1,46 @@
-#include <stdio.h> /* printf, sprintf */
-#include <stdlib.h> /* exit */
-#include <unistd.h> /* read, write, close */
-#include <string.h> /* memcpy, memset */
+/***
+ * ===---Description------------------------------------------------------------===
+ *  Solution for the Hodor Project, Level 0 by Julien Barbier.
+ *  Using C Language!    BOOOOMMMMMM ! ! ! \o/ \o/ \o/
+ *  by Alexandro de Oliveira, for Holberton School
+ * ===--------------------------------------------------------------------------===
+ */
+
+#include <stdio.h>      /* printf, perror */
+#include <stdlib.h>     /* exit */
+#include <unistd.h>     /* read, write, close */
+#include <string.h>     /* memcpy, memset */
 #include <sys/socket.h> /* socket, connect */
 #include <netinet/in.h> /* struct sockaddr_in, struct sockaddr */
-#include <netdb.h> /* struct hostent, gethostbyname */
+#include <netdb.h>      /* struct hostent, gethostbyname */
 
 
 void error(const char *msg)
 {
     perror(msg); exit(0);
 }
-/***
-*===---Description---------------------------------------------------------------===
-*  Solution for the Hodor Project, Level 0 by Julien Barbier.
-*  Using C Language!    BOOOOMMMMMM ! ! ! \o/ \o/ \o/
-*  by Alexandro de Oliveira, for Holberton School
-*===-----------------------------------------------------------------------------===
-*/
+
 int main()
+{
+    int i;
+    const int votes = (1 << 10); /* Using bitwise operation to get the 1024 votes. */
+    i = 0;
+
+    while(i < votes) {
+        vote();
+        printf("Vote numer: %d\n", i + 1);
+        i++;
+    }
+
+    return 0;
+}
+
+void vote()
 {
     /* Setting the http port, hostname and message */
     int portno      =  80;
     char *host      =  "173.246.108.142";
-    char *message   =  "POST /level0.php HTTP/1.0\r\nContent-Type: application/x-www-form-urlencoded\r\nUser-Agent:C language POST Requests - Alexandro de Oliveira\r\nContent-Length:25\r\n\r\nid=23&holdthedoor=submit\r\n";
+    char *message   =  "POST /level0.php HTTP/1.0\r\nContent-Type: application/x-www-form-urlencoded\r\nUser-Agent:C language POST Requests - Alexandro de Oliveira\r\nContent-Length:24\r\n\r\nid=23&holdthedoor=submit\r\n";
 
     struct hostent *server;
     struct sockaddr_in serv_addr;
@@ -75,11 +92,8 @@ int main()
     if (received == total)
     error("ERROR storing complete response from socket");
 
-    /* close the socket */
+    /* close the socket/connection */
     close(sockfd);
-
-    /* process response */
-    printf("Response:\n%s\n",response);
-
-    return 0;
+    /* *Optionally print the response: */
+    /* printf("Response:\n%s\n",response); */
 }
