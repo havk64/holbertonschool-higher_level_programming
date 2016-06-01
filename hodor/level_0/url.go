@@ -1,3 +1,12 @@
+/*
+// ===---Description---------------------------------------------------------------===
+//  Solution for the Hodor Project, Level 0 by Julien Barbier.
+//  It needs the main.go file to compile.
+//
+//  by Alexandro de Oliveira, for Holberton School
+// ===-----------------------------------------------------------------------------===
+*/
+
 package main
 
 import (
@@ -47,7 +56,7 @@ func clientPost() *url.Values {
 func customHeader() http.Header {
 	return http.Header{
 		"User-Agent": []string{
-			"by Alexandro for Holberton_School - Using Golang",
+			"havk64 - Using Golang async requests",
 		},
 		"Content-type": []string{
 			"application/x-www-form-urlencoded",

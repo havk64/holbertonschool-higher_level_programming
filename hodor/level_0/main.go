@@ -1,3 +1,12 @@
+/*
+// ===---Description---------------------------------------------------------------===
+//  Solution for the Hodor Project, Level 0 by Julien Barbier.
+//  It needs the url.go file to compile.
+//
+//  by Alexandro de Oliveira, for Holberton School
+// ===-----------------------------------------------------------------------------===
+*/
+
 package main
 
 import (
@@ -8,6 +17,38 @@ import (
 	"time"
 )
 
+//===--Initializing the http Client for the whole session------------------===//
+// check() function checks if an error occurred, calls os.Exit(1)
+// to exit and prints the error to the screeen.
+//===----------------------------------------------------------------------===//
+/*
+var (
+	httpClient *http.Client
+)
+
+// MaxIdleConnections and RequestTimeout
+const (
+	MaxIdleConnections int = 20
+	RequestTimeout     int = 5
+)
+
+// init HTTPClient
+func init() {
+	httpClient = createHTTPClient()
+}
+
+// createHTTPClient for connection re-use
+func createHTTPClient() *http.Client {
+	client := &http.Client{
+		Transport: &http.Transport{
+			MaxIdleConnsPerHost: MaxIdleConnections,
+		},
+		Timeout: time.Duration(RequestTimeout) * time.Second,
+	}
+
+	return client
+}
+*/
 //===--Function check()----------------------------------------------------===//
 // check() function checks if an error occurred, calls os.Exit(1)
 // to exit and prints the error to the screeen.
@@ -28,10 +69,11 @@ func main() {
 	start := time.Now()
 	var wg sync.WaitGroup
 	vote := connect()
-	for i := 0; i < 1024; i++ {
+	const total = (1 << 10)
+	for i := 0; i < total; i++ {
 		wg.Add(1)
 		time.Sleep(25 * time.Millisecond) // Makes one request each 25 milliseconds(to avoid too many open files)
-		go func(i int) {                   // Starting the goroutines.
+		go func(i int) {                  // Starting the goroutines.
 			defer wg.Done()
 			vote(i)
 		}(i)
