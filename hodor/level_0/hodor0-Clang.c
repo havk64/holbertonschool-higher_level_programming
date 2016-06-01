@@ -1,7 +1,7 @@
 
 /***
  * ===---Description---------------------------------------------------------------===
- *   Solution for the Hodor Project, Level 1 by Julien Barbier.
+ *   Solution for the Hodor Project, Level 0 by Julien Barbier.
  *   Using C Language!    BOOOOMMMMMM ! ! ! \o/ \o/ \o/
  *
  *   by Alexandro de Oliveira, for Holberton School
@@ -15,6 +15,7 @@
 #include <sys/socket.h> /* socket, connect */
 #include <netinet/in.h> /* struct sockaddr_in, struct sockaddr */
 #include <netdb.h>      /* struct hostent, gethostbyname */
+
 void vote();
 
 void error(const char *msg)
@@ -42,7 +43,7 @@ void vote()
     /* Setting the http port, hostname and message */
     int portno      =  80;
     char *host      =  "173.246.108.142";
-    char *message   =  "POST /level0.php HTTP/1.1\r\nUser-Agent:havk64 - C language requests\r\nCookie:HoldTheDoor=990aede99b2115451d612b8c50ae6332a8026b62\r\nContent-Length:69\r\nContent-Type: application/x-www-form-urlencoded\r\n\r\nid=23&holdthedoor=submit&key=990aede99b2115451d612b8c50ae6332a8026b62\r\n";
+    char *message   =  "POST /level0.php HTTP/1.1\r\nUser-Agent:havk64 - C language requests\r\nContent-Length:24\r\nContent-Type: application/x-www-form-urlencoded\r\n\r\nid=23&holdthedoor=submit\r\n";
 
     struct hostent *server;
     struct sockaddr_in serv_addr;
