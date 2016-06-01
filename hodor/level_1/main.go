@@ -1,3 +1,11 @@
+/*
+// ===---Description---------------------------------------------------------------===
+//  Solution for the Hodor Project, Level 1 by Julien Barbier.
+//  It needs the url.go file to compile.
+//
+//  by Alexandro de Oliveira, for Holberton School
+// ===-----------------------------------------------------------------------------===
+*/
 package main
 
 import (
@@ -27,8 +35,8 @@ func check(e error) {
 func main() {
 	start := time.Now()
 	var wg sync.WaitGroup
-	vote := connect() // Assigning the Closure to the variable vote.
-	for i := 0; i < 1024; i++ {
+	vote := connect()                // Assigning the Closure to the variable vote.
+	for i := 0; i < (1 << 10); i++ { //1 << 10 is a bitwise operation that results in 1024.
 		wg.Add(1)
 		time.Sleep(25 * time.Millisecond) // Makes one request each 25 milliseconds(to avoid too many open files)
 		go func(i int) {                  // Starting the goroutines.

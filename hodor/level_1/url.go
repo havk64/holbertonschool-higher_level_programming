@@ -1,3 +1,11 @@
+/*
+// ===---Description---------------------------------------------------------------===
+//  Solution for the Hodor Project, Level 1 by Julien Barbier.
+//  It needs the main.go file to compile.
+//
+//  by Alexandro de Oliveira, for Holberton School
+// ===-----------------------------------------------------------------------------===
+*/
 package main
 
 import (
@@ -32,8 +40,8 @@ func parsedURL() *url.URL {
 //===--Function clientPost()-----------------------------------------------===//
 // clientPost() is used to fill the form for que POST request.
 //===----------------------------------------------------------------------===//
-func clientPost() *url.Values {
-	post := &url.Values{ // Custom Query created based in the the type url.Values,
+func clientPost() url.Values {
+	post := url.Values{ // Custom Query created based on type url.Values,
 		"id": []string{ // that is basically: map[string][]string
 			"23",
 		},
