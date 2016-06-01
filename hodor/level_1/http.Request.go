@@ -1,7 +1,17 @@
+/*
+// ===---Description---------------------------------------------------------------===
+//  This files just is the Go representation of a http.Request.
+//  It is kept here just for learn purposes.
+//
+//  by Alexandro de Oliveira, for Holberton School
+// ===-----------------------------------------------------------------------------===
+*/
+
 package main
 
 import (
 	"crypto/tls"
+	"io/ioutil"
 	"mime/multipart"
 	"net/http"
 	"net/url"
@@ -9,7 +19,7 @@ import (
 )
 
 func request() *http.Request {
-	&http.Request{
+	return &http.Request{
 		Method: "POST",
 		URL: &url.URL{
 			Scheme:   "http",

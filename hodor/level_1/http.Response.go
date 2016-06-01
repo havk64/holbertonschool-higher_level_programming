@@ -1,3 +1,12 @@
+/*
+// ===---Description---------------------------------------------------------------===
+//  This files just is the Go representation of a http.Request.
+//  It is Kept here just for learn purposes.
+//
+//  by Alexandro de Oliveira, for Holberton School
+// ===-----------------------------------------------------------------------------===
+*/
+
 package main
 
 import (
