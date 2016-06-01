@@ -2,8 +2,9 @@
 import Foundation
 
 //===---Description:------------------------------------------------------------===//
-// Swift script to solve Hodor Level 0 Project by Julien Barbier - Holberton
+// Swift script to solve Hodor Level 1 Project by Julien Barbier - Holberton
 // School.
+// by Alexandro de Oliveira.
 // Working 100% ! ! ! (not Asyncronous yet, though)
 //
 // Next step is to create an iOS app to automatize the vote process...
