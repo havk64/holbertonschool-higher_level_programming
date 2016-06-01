@@ -39,9 +39,15 @@ int main()
 void vote()
 {
     /* Setting the http port, hostname and message */
-    int portno      =  80;
-    char *host      =  "173.246.108.142";
-    char *message   =  "POST /level1.php HTTP/1.1\r\nUser-Agent:havk64 - C language requests\r\nCookie:HoldTheDoor=990aede99b2115451d612b8c50ae6332a8026b62\r\nContent-Length:69\r\nContent-Type: application/x-www-form-urlencoded\r\n\r\nid=23&holdthedoor=submit&key=990aede99b2115451d612b8c50ae6332a8026b62\r\n";
+    int portno	   =	80;
+    char * host	   =	"173.246.108.142";
+    char * message =	"POST /level1.php HTTP/1.0\r\n"
+			"User-Agent:havk64 - C language requests\r\n"
+			"Cookie:HoldTheDoor=990aede99b2115451d612b8c50ae6332a8026b62\r\n"
+			"Content-Length:69\r\n"
+			"Content-Type: application/x-www-form-urlencoded\r\n"
+			"\r\n"
+			"id=23&holdthedoor=submit&key=990aede99b2115451d612b8c50ae6332a8026b62\r\n";
 
     struct hostent *server;
     struct sockaddr_in serv_addr;
@@ -96,5 +102,5 @@ void vote()
     /* Close the socket */
     close(sockfd);
     /* *Optionally, print the response: */
-    /*printf("Response:\n%s\n",response);*/
+    /* printf("Response:\n%s\n",response); */
 }
