@@ -20,18 +20,17 @@ my $ua  = LWP::UserAgent->new();
 $ua->agent("havk64 - Perl Requests");
 
 my $url = 'http://173.246.108.142/level0.php';
-
+my $counter = 1; # Initializing the counter.
 for(my $i = 0; $i < (1 << 10); $i++) {
-    my $request = $ua->post($url, { id => "23",holdthedoor => 'submit'});
-    my $content  = $request->decoded_content();
-    print "Vote number: $i\n";
+    my $request = $ua->post($url, { id => "23", holdthedoor => 'submit'});
+    # To print the server headers:
+    # print $request->headers_as_string;
+    if($request->content =~ m/I voted!/) { # Using regexp to check if the vote was confirmed.
+        print "Vote number: $counter\n";
+        $counter++;
+    } else {
+        print "Connection error...(vote not computed)";
+    }
+    # To print the body:
+    # print $request->decoded_content();
 }
-
-# To print the server headers:
-# print $request->headers_as_string;
-
-# To print the body:
-# print $request->content;
-
-# Another way to print the body:
-# print $content;
