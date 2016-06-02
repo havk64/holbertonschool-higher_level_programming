@@ -69,7 +69,7 @@ func main() {
 	start := time.Now()
 	var wg sync.WaitGroup
 	vote := connect()
-	const total = (1 << 10)
+	const total = (1 << 10) // (1 << 10) = 1024. Left shift operation.
 	for i := 0; i < total; i++ {
 		wg.Add(1)
 		time.Sleep(25 * time.Millisecond) // Makes one request each 25 milliseconds(to avoid too many open files)
@@ -97,7 +97,12 @@ func connect() func(int) {
 		req.Header = customHeader()
 		resp, err := client.Do(req)
 		check(err)
+		if resp.StatusCode == 200 && err == nil {
+			fmt.Printf("Vote number: %d \n", (counter + 1))
+			counter++
+		} else {
+			fmt.Println("Connection error: (vote not computed!)")
+		}
 		defer resp.Body.Close()
-		defer fmt.Printf("Vote number: %d \n", n)
 	}
 }
