@@ -1,8 +1,8 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
-use LWP::UserAgent;
-use Data::Dump "pp"; # Used to print the request object, if desired.
+use LWP::UserAgent;	# Used to the http requests.
+use Data::Dump "pp";	# Used to print the request object, if desired.
 
 =pod
  * ===---Description------------------------------------------------------------===
@@ -33,12 +33,14 @@ my $ua  = LWP::UserAgent->new(%options);
 # Setting the header:
 $ua->default_header('Referer' => $url);
 $ua->default_header('Cookie' => "HoldTheDoor=$cookie");
+
 # Optionally print the request header:
 # print pp($ua);
 
 my $counter = 0; # Initializing the voute counter.
 for(my $i = 0; $i < (1 << 10); $i++) {
     my $request = $ua->post($url, $params);
+    
     # To print the server headers:
     # print $request->headers_as_string;
     my $check = $request->header('Set-Cookie');
@@ -52,5 +54,6 @@ for(my $i = 0; $i < (1 << 10); $i++) {
     # To print the body:
     # print $request->decoded_content();
 }
+
 # Printing the total of valid votes.
 print "Total of valid votes: $counter\n";
