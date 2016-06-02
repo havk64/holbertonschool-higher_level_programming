@@ -1,7 +1,7 @@
 /*
  * ===---Description------------------------------------------------------------===
- *   Solution for the Hodor Project, Level 1 by Julien Barbier.
- *   Using Python script(httplib and urllib).
+ *   Solution for the Hodor Project, Level 0 by Julien Barbier.
+ *   Using PHP through command line.
  *
  *   by Alexandro de Oliveira, for Holberton School
  * ===---Excecuting:-------------------------------------------------------------===
@@ -16,7 +16,7 @@
 $votes = (1 << 10);	// Total amount of desire votes.
 $counter = 1;		// Initializing the counter.
 $url = 'http://173.246.108.142/level0.php';
-$data = array('id' => '1', 'holdthedoor' => 'submit');
+$data = array('id' => '23', 'holdthedoor' => 'submit');
 $options = array(
     'http' => array(
         'header'  => "Content-type: application/x-www-form-urlencoded\r\n" .
