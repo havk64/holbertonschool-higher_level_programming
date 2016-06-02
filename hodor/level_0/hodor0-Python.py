@@ -1,3 +1,13 @@
+"""
+ *
+ * ===---Description------------------------------------------------------------===
+ *  Solution for the Hodor Project, Level 0 by Julien Barbier.
+ *  Using Python script(httplib and urllib).
+ *
+ *  by Alexandro de Oliveira, for Holberton School
+ * ===--------------------------------------------------------------------------===
+ *
+"""
 from httplib import HTTPConnection
 from urllib import urlencode
 
