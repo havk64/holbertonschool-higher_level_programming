@@ -2,5 +2,5 @@
 2) 25
 3) 10021
 4) 2 (for each number)
-5) 11 unique keys(or 13 in total)
+5) 11
 6> home
