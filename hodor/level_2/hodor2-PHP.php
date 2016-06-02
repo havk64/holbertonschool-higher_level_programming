@@ -20,10 +20,10 @@ $cookie = "c63e8f4583e0fc89436699268e402b6a441281c9";
 $data = array('id' => '23', 'holdthedoor' => 'submit', 'key' => $cookie);
 $options = array(
     'http' => array(
-        'header'  => "Content-type: application/x-www-form-urlencoded\r\n" . //Spliting the line
+        'header'  => "Content-type: application/x-www-form-urlencoded\r\n" .	//Spliting this long string...
                      "User-Agent: Windows NT 5.1 - (Spoofing the User-Agent) havk64 - PHP Requests\r\n" . //through...
-                     "Cookie: HoldTheDoor=" . $cookie . "\r\n" . // multiple ...
-                     "Referer: " . $url . "\r\n", // lines.
+                     "Cookie: HoldTheDoor=" . $cookie . "\r\n" .		// multiple ...
+                     "Referer: " . $url . "\r\n",				// lines.
         'method'  => 'POST',
         'content' => http_build_query($data)
     )
