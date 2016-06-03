@@ -56,13 +56,6 @@ function runIt(options, params){
                 console.log(e);
             });
         });
-        post.on('socket', function (socket) {
-            socket.setTimeout(20000);
-            socket.on('timeout', function() {
-                console.log(msg)
-                post.abort();
-            });
-        });
         post.on('error', (e) => {
             console.log(`Request problem: ${e.message}`);
         });
