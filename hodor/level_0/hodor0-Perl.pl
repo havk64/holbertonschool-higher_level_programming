@@ -2,11 +2,10 @@
 use strict;
 use warnings;
 use LWP::UserAgent;
-use HTTP::Request::Common qw{ POST };
 
 =pod
  * ===---Description------------------------------------------------------------===
- *   Solution for the Hodor Project, Level 2 by Julien Barbier.
+ *   Solution for the Hodor Project, Level 0 by Julien Barbier.
  *   Using a simple Perl script.
  *
  *   by Alexandro de Oliveira, for Holberton School
