@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# ===---Hodor Level 1-------------------------------------------------------------===
-# Solution in Shell Script for Hodor Project by Julien Barbier - Holberton School
-# Using curl command taking advantage of its default 'keep-alive' connection.
+# ===---Hodor Level 2-------------------------------------------------------------===
+# Solution in Shell Script for Hodor Project Level 2, by Julien Barbier 
+# Using curl command.
 # If you want to see more details about each request replace the "s" option with "v"
 # right after the 'curl' command.
+# by Alexandro de Oliveira, for Holberton School.
 # ===-----------------------------------------------------------------------------===
 
 URL=http://173.246.108.142/level2.php
