@@ -42,3 +42,14 @@ class Car:
 
     def __str__(self):
         return self.__name + " " + self.__brand + " (" + str(self.__nb_doors) + ')'
+
+    def set_nb_doors(self, n):
+        self.__nb_doors = n
+
+c = Car(name="Rogue", brand="Nissan", nb_doors=5)
+print "c: %s" % c
+
+c2 = Car(c.to_hash())
+c2.set_nb_doors(3)
+print "c2: %s" % c2
+print "c: %s" % c
