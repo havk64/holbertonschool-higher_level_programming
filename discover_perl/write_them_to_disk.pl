@@ -3,7 +3,7 @@
 =pod
 * ===---Description------------------------------------------------------------===
 *   Github Perl most popular Projects, based on Rudy Rigoy projects.
-*   Using a Perl script to get the 30 most popular Perl Github repositories
+*   Using a Perl script to get the 30 most popular Perl Github repositories.
 *
 *   by Alexandro de Oliveira, for Holberton School
 * ===--------------------------------------------------------------------------===
