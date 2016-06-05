@@ -10,7 +10,7 @@ class Car:
             mhash = args[0]
             name = str(mhash.get('name'))
             brand = str(mhash.get('brand'))
-            nb_doors = str(mhash.get('nb_doors'))
+            nb_doors = mhash.get('nb_doors')
         else:
             name = kwargs.get('name')
             brand = kwargs.get('brand')
@@ -57,8 +57,7 @@ class Car:
     def to_xml_node(self, doc):
         car = doc.createElement('car')
         car.setAttribute('nb_doors', str(self.__nb_doors))
-        doc.appendChild(car)
-
+        #doc.appendChild(car)
         name = doc.createElement('name')
         name.appendChild(doc.createCDATASection(self.__name))
         car.appendChild(name)
@@ -67,4 +66,5 @@ class Car:
         brand_content = doc.createTextNode(self.__brand)
         brand.appendChild(brand_content)
         car.appendChild(brand)
+
         return car
