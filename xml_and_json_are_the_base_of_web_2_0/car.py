@@ -57,7 +57,7 @@ class Car:
     def to_xml_node(self, doc):
         car = doc.createElement('car')
         car.setAttribute('nb_doors', str(self.__nb_doors))
-        #doc.appendChild(car)
+
         name = doc.createElement('name')
         name.appendChild(doc.createCDATASection(self.__name))
         car.appendChild(name)
@@ -68,3 +68,6 @@ class Car:
         car.appendChild(brand)
 
         return car
+
+    def to_comma(self):
+        return self.__name + ',' + self.__brand + ',' + str(self.__nb_doors)
