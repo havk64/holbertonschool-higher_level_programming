@@ -1,11 +1,16 @@
+from xml.dom.minidom import Document
+
 class Car:
     """Definition of the Car class"""
     def __init__(self, *args, **kwargs):
-        if len(args) > 0 and isinstance(args[0], dict):
+        if len(args) == 1 and type(args[0]) is str and len(args[0].split(",")) == 3:
+            name, brand, nb_doors = args[0].split(",", 3)
+            nb_doors = int(nb_doors)
+        elif len(args) > 0 and isinstance(args[0], dict):
             mhash = args[0]
-            name = mhash.get('name')
-            brand = mhash.get('brand')
-            nb_doors = mhash.get('nb_doors')
+            name = str(mhash.get('name'))
+            brand = str(mhash.get('brand'))
+            nb_doors = str(mhash.get('nb_doors'))
         else:
             name = kwargs.get('name')
             brand = kwargs.get('brand')
@@ -46,10 +51,20 @@ class Car:
     def set_nb_doors(self, n):
         self.__nb_doors = n
 
-c = Car(name="Rogue", brand="Nissan", nb_doors=5)
-print "c: %s" % c
+    def to_json_string(self):
+        return '{"nb_doors": ' + str(self.__nb_doors) + ', "brand": "' + self.__brand + ', "name": "' + self.__name + '"}'
 
-c2 = Car(c.to_hash())
-c2.set_nb_doors(3)
-print "c2: %s" % c2
-print "c: %s" % c
+    def to_xml_node(self, doc):
+        car = doc.createElement('car')
+        car.setAttribute('nb_doors', str(self.__nb_doors))
+        doc.appendChild(car)
+
+        name = doc.createElement('name')
+        name.appendChild(doc.createCDATASection(self.__name))
+        car.appendChild(name)
+
+        brand = doc.createElement('brand')
+        brand_content = doc.createTextNode(self.__brand)
+        brand.appendChild(brand_content)
+        car.appendChild(brand)
+        return car
