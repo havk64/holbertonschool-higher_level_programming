@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ===---Hodor Level 0-------------------------------------------------------------===
+# ===---Hodor Level 1-------------------------------------------------------------===
 #  Solution in Shell Script for Hodor Project Level 1, by Julien Barbier
 #  Using Apache HTTP server benchmarking tool.
 #  More info: http://httpd.apache.org/docs/2.4/programs/ab.html
