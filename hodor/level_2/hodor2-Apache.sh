@@ -8,6 +8,7 @@
 #  by Alexandro de Oliveira, for Holberton School.
 # ===-----------------------------------------------------------------------------===
 
+# Defining parameters/variables:
 URL=http://173.246.108.142/level2.php		# URL
 TYPE='application/x-www-form-urlencoded'	# Content Type.
 REQ=$((1 << 10))				# Total number of requests.
@@ -17,7 +18,7 @@ VERB=1						# Verbosity level(from 0 to 4)
 HEADER='User-Agent: Windows NT 100000.0.0.0.1 havk64 - Using Apache Benchmark utility'
 REF="Referer: $URL"
 
-# Getting the cookie the subsequent post requests:
+# Getting, parsing, extracting the cookie value and assigning it to a variable:
 COOKIE=$(curl -X HEAD -s -c - http://173.246.108.142/level1.php | grep HoldTheDoor | awk '{ print $7 }')
 
 # Writing the cookie for the file that Apache needs:
