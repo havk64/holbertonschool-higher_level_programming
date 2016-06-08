@@ -60,6 +60,7 @@ INSERT INTO TVShowPerson (tvshow_id, person_id) VALUES (
     (SELECT id FROM Person WHERE first_name='Arya')
 );
 
+-- Listing all items from each table:
 SELECT * FROM Person;
 SELECT * FROM EyesColor;
 SELECT * FROM TVShow;
