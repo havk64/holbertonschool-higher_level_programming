@@ -1,5 +1,5 @@
 /*
- * ===---SQL Playground 2-------------------------------------------------------===
+ * ===---SQL Playground 3-------------------------------------------------------===
  *  SQL Script for SQL Playground Project, by Guillaume
  *
  *  by Alexandro de Oliveira, for Holberton School.
