@@ -38,16 +38,14 @@ $ua->default_headers($headers);
 
 my $req = POST $url, $params;
 # Optionally print the request header(great for learning purposes):
- print pp($ua);
+# print pp($ua);
 
 my $counter = 0; # Initializing the voute counter.
-for(my $i = 0; $i < (1 << 1); $i++) {
-    #my $request = $ua->post($url, $params);
-    #my $request = HTTP:Request->new('POST', )
+for(my $i = 0; $i < (1 << 10); $i++) {
     my $request = $ua->request($req);
 
     # To print the server headers:
-     print $request->headers_as_string;
+    # print $request->headers_as_string;
     my $check = $request->header('Set-Cookie');
     my $pattern = 'HoldTheDoor';
     if(defined($check) && $check =~ m/$pattern/) { # Using regexp to check if the vote was confirmed.
