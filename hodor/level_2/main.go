@@ -20,7 +20,7 @@ import (
 // check() function checks if an error occurred, calls os.Exit(1)
 // to exit and prints the error to the screeen.
 //===----------------------------------------------------------------------===//
-/*
+
 var (
 	httpClient *http.Client
 )
@@ -47,7 +47,7 @@ func createHTTPClient() *http.Client {
 
 	return client
 }
-*/
+
 //===--Function check()----------------------------------------------------===//
 // check() function checks if an error occurred, calls os.Exit(1)
 // to exit and prints the error to the screeen.
@@ -68,7 +68,7 @@ func main() {
 	start := time.Now()
 	var wg sync.WaitGroup
 	vote := connect()
-	const total = (1 << 1)
+	const total = (1 << 10)
 	for i := 0; i < total; i++ {
 		wg.Add(1)
 		time.Sleep(50 * time.Millisecond) // Makes one request each 25 milliseconds(to avoid too many open files)
