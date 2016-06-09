@@ -15,6 +15,7 @@
 		A6DE25A31D09FAB4003F52D1 /* TechCompaniesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DE25A21D09FAB4003F52D1 /* TechCompaniesTests.swift */; };
 		A6DE25AE1D09FAB4003F52D1 /* TechCompaniesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DE25AD1D09FAB4003F52D1 /* TechCompaniesUITests.swift */; };
 		A6DE25BD1D09FB53003F52D1 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DE25BC1D09FB53003F52D1 /* Entity.swift */; };
+		A6DE25BF1D0A12E9003F52D1 /* EntitiesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DE25BE1D0A12E9003F52D1 /* EntitiesHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		A6DE25AD1D09FAB4003F52D1 /* TechCompaniesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechCompaniesUITests.swift; sourceTree = "<group>"; };
 		A6DE25AF1D09FAB4003F52D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6DE25BC1D09FB53003F52D1 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		A6DE25BE1D0A12E9003F52D1 /* EntitiesHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntitiesHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				A6DE25BC1D09FB53003F52D1 /* Entity.swift */,
+				A6DE25BE1D0A12E9003F52D1 /* EntitiesHelper.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6DE25BF1D0A12E9003F52D1 /* EntitiesHelper.swift in Sources */,
 				A6DE25901D09FAB3003F52D1 /* ViewController.swift in Sources */,
 				A6DE258E1D09FAB3003F52D1 /* AppDelegate.swift in Sources */,
 				A6DE25BD1D09FB53003F52D1 /* Entity.swift in Sources */,
