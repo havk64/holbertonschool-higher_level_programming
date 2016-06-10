@@ -15,10 +15,10 @@ enum EntityType:String {
 }
 
 class Entity {
-    private var name:String
-    private var town:String
-    private var imageName:String
-    private var type:EntityType
+    private (set) var name:String
+    private (set) var town:String
+    private (set) var imageName:String
+    private (set) var type:EntityType
     init (name:String, town:String, imageName:String, type:EntityType = .None) {
         self.name = name
         self.town = town
