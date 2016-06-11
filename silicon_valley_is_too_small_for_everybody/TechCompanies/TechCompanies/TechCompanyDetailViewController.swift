@@ -10,10 +10,20 @@ import UIKit
 
 class TechCompanyDetailViewController: UIViewController {
 
+    var entity:Entity!
+    
+    @IBOutlet weak var label_entity: UILabel!
+    @IBOutlet weak var image_entity: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if self.entity != nil {
+            self.title = entity.name
+            self.label_entity.text = entity.town
+            self.image_entity.image = UIImage(imageLiteral: entity.imageName)
+            self.image_entity.contentMode = .ScaleAspectFit
+        }
     }
 
     override func didReceiveMemoryWarning() {

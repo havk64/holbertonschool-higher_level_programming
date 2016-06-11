@@ -66,5 +66,38 @@
             </objects>
             <point key="canvasLocation" x="404" y="-60"/>
         </scene>
+        <!--Tech Company Detail View Controller-->
+        <scene sceneID="9av-7x-4EE">
+            <objects>
+                <viewController id="cJa-Qt-Cea" customClass="TechCompanyDetailViewController" customModule="TechCompanies" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rlK-yb-Ojx"/>
+                        <viewControllerLayoutGuide type="bottom" id="RZb-YR-jVf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z1T-n2-ZBy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Vi-G7-bMd">
+                                <rect key="frame" x="279" y="20" width="42" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hs5-QD-Hum">
+                                <rect key="frame" x="200" y="380" width="200" height="200"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="image_entity" destination="hs5-QD-Hum" id="qQh-2d-aGA"/>
+                        <outlet property="label_entity" destination="3Vi-G7-bMd" id="07X-2F-YzT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qX8-Gn-JG9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-288" y="-48"/>
+        </scene>
     </scenes>
 </document>

@@ -17,6 +17,7 @@
 		A6DE25BD1D09FB53003F52D1 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DE25BC1D09FB53003F52D1 /* Entity.swift */; };
 		A6DE25BF1D0A12E9003F52D1 /* EntitiesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DE25BE1D0A12E9003F52D1 /* EntitiesHelper.swift */; };
 		A6DE25C21D0A1E18003F52D1 /* TechCompaniesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DE25C11D0A1E18003F52D1 /* TechCompaniesListViewController.swift */; };
+		A6DE25C41D0A5DA0003F52D1 /* TechCompanyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DE25C31D0A5DA0003F52D1 /* TechCompanyDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		A6DE25BC1D09FB53003F52D1 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		A6DE25BE1D0A12E9003F52D1 /* EntitiesHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntitiesHelper.swift; sourceTree = "<group>"; };
 		A6DE25C11D0A1E18003F52D1 /* TechCompaniesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechCompaniesListViewController.swift; sourceTree = "<group>"; };
+		A6DE25C31D0A5DA0003F52D1 /* TechCompanyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechCompanyDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				A6DE25C11D0A1E18003F52D1 /* TechCompaniesListViewController.swift */,
+				A6DE25C31D0A5DA0003F52D1 /* TechCompanyDetailViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				A6DE258E1D09FAB3003F52D1 /* AppDelegate.swift in Sources */,
 				A6DE25C21D0A1E18003F52D1 /* TechCompaniesListViewController.swift in Sources */,
 				A6DE25BD1D09FB53003F52D1 /* Entity.swift in Sources */,
+				A6DE25C41D0A5DA0003F52D1 /* TechCompanyDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
