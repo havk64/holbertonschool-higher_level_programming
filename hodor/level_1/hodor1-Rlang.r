@@ -13,9 +13,9 @@ url     <- "http://173.246.108.142/level1.php"
 head    <- HEAD(url)            # Head request
 cookie  <- cookies(head)$value
 body    <- list(id = "23", holdthedoor = "submit", key = cookie)
-header  <- add_headers("User-Agent" = "havk64 R Language Requests", "Cookie" = paste("HoldTheDoor", cookie, sep="="))
+header  <- add_headers("User-Agent" = "havk64 R Language Requests")
 
-for(i in 1:1) {
+for(i in 1:10) {
     p <- POST(url, body = body, encode = "form", header)
     s <- content(p, "text", encoding = 'UTF8')[1]
     match = grep("I voted!", s, perl=TRUE, value=FALSE) # Regexp to check of vote is valid.
@@ -24,5 +24,4 @@ for(i in 1:1) {
     } else {
         cat( "Failed...", "\n")
     }
-    cat(s, "\n")
 }
