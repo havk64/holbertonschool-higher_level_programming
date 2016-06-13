@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 """
-# ===---Description------------------------------------------------------------===
-#   "Databases are so easy to manage in command line" Project, by Guillaume
-#
-#   Solutions by Alexandro de Oliveira, for Holberton School
-# ===---------------------------------------------------------------------------===
+ ===---Description------------------------------------------------------------===
+   "Databases are so easy to manage in command line" Project, by Guillaume
+    Main file.
+
+   Solutions by Alexandro de Oliveira, for Holberton School
+ ===---------------------------------------------------------------------------===
 """
 import sys
 # Show Python version:
