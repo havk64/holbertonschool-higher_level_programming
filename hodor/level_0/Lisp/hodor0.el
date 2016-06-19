@@ -1,0 +1,5 @@
+(let ((url-request-method        "POST")
+      (url-request-extra-headers `(("Content-Type" . "application/x-www-form-urlencoded")))
+      (url-request-data          "id=23&holdthedoor=submit"))
+  (with-current-buffer (url-retrieve-synchronously "http://173.246.108.142/level0.php")
+                (buffer-string)))
