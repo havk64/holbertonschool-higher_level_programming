@@ -1,6 +1,6 @@
 # ===---Hodor Level 4----------------------------------------------------------===
 #    Solution for the Hodor Project, Level 4 by Julien Barbier.
-#    Using R Language with RCurl library + Socks5 Tor netword.
+#    Using R Language with RCurl library + Socks5 Tor network.
 #
 #    by Alexandro de Oliveira, for Holberton School
 # ===--------------------------------------------------------------------------===
