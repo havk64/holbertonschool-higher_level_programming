@@ -27,7 +27,7 @@ cookie = head['Set-cookie'].split('; ')[0]
 headers['Cookie'] = cookie
 # Setting POST request parameters:
 params = URI.encode_www_form({
-                               'id' => "23",
+                               'id' => "1",
                                'holdthedoor' => "submit",
                                'key' => cookie.split('=')[1],
                              })

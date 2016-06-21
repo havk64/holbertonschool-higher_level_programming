@@ -52,11 +52,14 @@ func clientPost() *url.Values {
 //===----------------------------------------------------------------------===//
 func customHeader() http.Header {
 	return http.Header{
-		"User-Agent":   []string{"Windows NT 1000.1.1.1.1.1 - (I'm kidding, I have windows! Lol!)"},
+		"User-Agent":   []string{"Windows NT 1000.1.1.1.1.1 - (I'm kidding, I hate windows! Lol!)"},
 		"Content-type": []string{"application/x-www-form-urlencoded"},
 		"Cookie":       []string{"HoldTheDoor=564599e6478332473dbb28a942390d163cd79e26"},
 		"Referer": []string{
 			"http://173.246.108.142/level2.php",
+		},
+		"Connection": []string{
+			"keep-alive",
 		},
 	}
 }
