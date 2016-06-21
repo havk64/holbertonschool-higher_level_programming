@@ -39,7 +39,7 @@ vote(0,_) ->
    posting(),
    [Term|vote(N-1,Term)].
 
-
+%% Starting the http client and the iterations from our main function.
 main() ->
     ssl:start(),
     application:start(inets),
