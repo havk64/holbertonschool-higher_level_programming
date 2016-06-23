@@ -1,3 +1,5 @@
+#!/usr/bin/env Rscript
+
 # ===---Description------------------------------------------------------------===
 #   Solution for the Hodor Project, Level 1 by Julien Barbier.
 #   Using a R Language script with httr library.
@@ -9,18 +11,26 @@
 
 library('httr')
 
+# Accepting command line arguments:
+# args	<- commandArgs(trailingOnly = TRUE)
+
+getCookie = function() {
+    head    <- HEAD(url)            # Head request
+    cookie  <- cookies(head)$value
+    return(cookie)
+}
+
+# Defining variables:
 url     <- "http://173.246.108.142/level1.php"
-head    <- HEAD(url)            # Head request
-cookie  <- cookies(head)$value
-body    <- list(id = "23", holdthedoor = "submit", key = cookie)
-header  <- add_headers("User-Agent" = "havk64 R Language Requests")
-count   <- 1
-total   <- as.integer(readline(prompt = "How many votes? => "))
+count   <- 0
+total   <- as.integer(readline("How many votes? => "))
 
 while(count < total) {
+    cookie  <-  getCookie()
+    body    <- list(id = "23", holdthedoor = "submit", key = cookie)
+    header  <- add_headers("User-Agent" = "havk64 R Language Requests")
     p <- POST(url, body = body, encode = "form", header)
-    s <- content(p, "text", encoding = 'UTF8')[1]
-    match = grep("I voted!", s, perl=TRUE, value=FALSE) # Regexp to check of vote is valid.
+    match = headers(p)$`set-cookie`
     if(!is.null(match)) {
         cat(".")
 	count <- count + 1
@@ -28,5 +38,4 @@ while(count < total) {
         cat("x")
     }
 }
-cat('\n', "Total valid votes is: ", total, '\n')
-
+cat('\n', "You voted ", total, " times\n")
