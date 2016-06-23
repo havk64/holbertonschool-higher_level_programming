@@ -12,14 +12,18 @@ library('httr')
 url     <- "http://173.246.108.142/level0.php"
 header  <- add_headers("User-Agent" = "havk64 R Language Requests")
 body    <- list(id = "23", holdthedoor = "submit")
+count   <- 1
+total   <- as.integer(readline(prompt = "How many votes? => "))
 
-for(i in 1:10) {
+while(count < total) {
     p <- POST(url, body = body, encode = "form", header)
     s <- content(p, "text", encoding = 'UTF8')[1]
     match = grep("I voted!", s, perl=TRUE, value=FALSE) # Regexp to check of vote is valid.
     if(!is.null(match)) {
-        cat("Vote number: ", i, "\n")
+        cat('.')
+        count <- count + 1
     } else {
-        cat( "Failed...", "\n")
+        cat('x')
     }
 }
+cat('\n')
