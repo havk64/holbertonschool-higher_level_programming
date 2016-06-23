@@ -3,8 +3,14 @@
 # ===---Description------------------------------------------------------------===
 #   Solution for the Hodor Project, Level 1 by Julien Barbier.
 #   Using a R Language script with httr library.
-#   To run this file install R language and run:
-#   $ R -f filename
+#   To run this file you need to install R language.
+#   You can run it using interactive(R console) or non interactive(Rscript)
+#   sessions:
+#   - Interactive -
+#   $ R
+#   $ source("nameoffile.r")
+#   - Non Interactive:
+#   $ Rscript nameofthefile.r
 #
 #   by Alexandro de Oliveira, for Holberton School
 # ===---------------------------------------------------------------------------===
@@ -14,26 +20,32 @@ library('httr')
 # Accepting command line arguments:
 # args	<- commandArgs(trailingOnly = TRUE)
 
-getCookie = function() {
-    head    <- HEAD(url)            # Head request
+# Function to get a cookie from a HEAD request and set the header to next request.
+# (We could also to get just one cookie at the beginning and use it to all requests)
+setRequest  <- function() {
+    head    <- HEAD(url)
     cookie  <- cookies(head)$value
-    return(cookie)
+    headers <- add_headers("User-Agent" = "havk64 R Language Requests")
+    body    <- list(id = "23", holdthedoor = "submit", key = cookie)
+    request <- list( body = body, headers = headers)
+    return(request)
 }
 
 # Defining variables:
 url     <- "http://173.246.108.142/level1.php"
+
+# Get number from user(interactive(R console) or non interactive(Rscript/batch) sessions):
+cat("How many votes? => ")
+total   <- as.integer(readLines("stdin", 1))
 count   <- 0
-total   <- as.integer(readline("How many votes? => "))
 
 while(count < total) {
-    cookie  <-  getCookie()
-    body    <- list(id = "23", holdthedoor = "submit", key = cookie)
-    header  <- add_headers("User-Agent" = "havk64 R Language Requests")
-    p <- POST(url, body = body, encode = "form", header)
-    match = headers(p)$`set-cookie`
-    if(!is.null(match)) {
+    request <- setRequest()
+    p <- POST(url, body = request$body, encode = "form", request$headers)
+    resp = headers(p)$`set-cookie`
+    if(!is.null(resp)) {
         cat(".")
-	count <- count + 1
+        count <- count + 1
     } else {
         cat("x")
     }
