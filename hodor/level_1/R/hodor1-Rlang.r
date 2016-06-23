@@ -14,14 +14,19 @@ head    <- HEAD(url)            # Head request
 cookie  <- cookies(head)$value
 body    <- list(id = "23", holdthedoor = "submit", key = cookie)
 header  <- add_headers("User-Agent" = "havk64 R Language Requests")
+count   <- 1
+total   <- as.integer(readline(prompt = "How many votes? => "))
 
-for(i in 1:1024) {
+while(count < total) {
     p <- POST(url, body = body, encode = "form", header)
     s <- content(p, "text", encoding = 'UTF8')[1]
     match = grep("I voted!", s, perl=TRUE, value=FALSE) # Regexp to check of vote is valid.
     if(!is.null(match)) {
-        cat("Vote number: ", i , "\n")
+        cat(".")
+	count <- count + 1
     } else {
-        cat( "Failed...", "\n")
+        cat("x")
     }
 }
+cat('\n', "Total valid votes is: ", total, '\n')
+
