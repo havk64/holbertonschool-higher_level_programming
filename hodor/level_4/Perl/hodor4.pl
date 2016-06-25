@@ -83,8 +83,10 @@ while($count < $total) {
         print "Failed...\n";
     }
     # To print the body:
-     print $request->decoded_content();
-    newIdentity(); # => Requesting new Tor identity(new Tor exit/IP).
+    # print $request->decoded_content();
+
+    # Requesting new Tor identity(new Tor exit/IP).
+    newIdentity(); # <<<<<<<=== <<<
 }
 
 # Printing the total of valid votes.
@@ -97,19 +99,23 @@ sub bodyrequest {
     my $value   = (split(/=/,$cookie))[1];
     # Setting the body of http request:
     my $params = [
-        id => "23", # => The ID number to vote(23 is my id number).
+        id          => "23", # => The ID number to vote(23 is my id number).
         holdthedoor => 'submit',
-        key => $value,
+        key         => $value,
     ];
     return $params;
 }
 # Function to request new Tor identity:
 sub newIdentity {
-    my $tor = IO::Socket::INET->new(
-                PeerAddress => '127.0.0.1',
-                PeerPort => 9051,
+    my $socket = IO::Socket::INET->new(
+                'PeerHost'  => '127.0.0.1',
+                'PeerPort'  => '9051',
+                'Proto'     =>  'tcp',
             ) or die "Problem making socket: $!";
-    print $tor 'AUTHENTICATE "',$torpass,'"';
-    print $tor 'SIGNAL NEWNYM';
-    sleep 10;
+    print $socket 'AUTHENTICATE "' . $torpass . '"' . "\n";
+    print $socket 'SIGNAL NEWNYM' . "\n";
+    my $var = <$socket>;# Checking the response to our request to new identity.
+    print $var . "\n";  # and printing it to the screen.
+    $socket->close();
+    sleep 1;
 }
