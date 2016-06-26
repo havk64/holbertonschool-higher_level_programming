@@ -62,7 +62,7 @@ while count < total do
     -- print (p(headers))
 
     -- =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-    -- Preparing the POST request:
+    -- Our POST request:
     local reqbody = "id=23&holdthedoor=submit&key="..value.."&captcha="..captcha
     local body, code, headers, status = http.request {
         method = "POST",
