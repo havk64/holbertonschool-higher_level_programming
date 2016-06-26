@@ -26,7 +26,7 @@ while count < total do
     -- Fetch the captcha, decoding it, and parse PHP session cookie:
     local filePath = lfs.currentdir().."/tmp.png"
     local img = assert(io.open(filePath, "w"))
-    local n, ok, header = http.request {
+    local _, _, header = http.request {
         url = captcha_url,
         sink = ltn12.sink.file(img)
     }
@@ -42,7 +42,7 @@ while count < total do
 
     -- =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
     -- HEAD request to get a cookie and use it in the POST request.
-    local body, code, headers, status = http.request {
+    local _, _, headers = http.request {
         method = "HEAD",
         url = url,
         headers =
@@ -61,7 +61,7 @@ while count < total do
     -- =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
     -- Our POST request:
     local reqbody = "id=23&holdthedoor=submit&key="..value.."&captcha="..captcha
-    local body, code, headers, status = http.request {
+    local _, _, headers = http.request {
         method = "POST",
         url = url,
         source = ltn12.source.string(reqbody),
