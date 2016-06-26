@@ -1,16 +1,13 @@
 #!/usr/bin/lua
---[=====[
+--[[
  ===-----------------------------------------------------------------------===
       Hodor Project level 3, by Julien Barbier
       Using Lua programming language and Tesseract-OCR.
 
       By Alexandro de Oliveira.
  ===-----------------------------------------------------------------------===
---]=====]
-function trim(s)
- local from = s:match"^%s*()"
- return from > #s and "" or s:match(".*%S", from)
-end
+--]]
+
 --  To install the http package do: $ luarocks install luasocket
 local http = require "socket.http"
 local ltn12 = require "ltn12"

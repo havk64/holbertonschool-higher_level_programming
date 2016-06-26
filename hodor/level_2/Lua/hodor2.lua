@@ -1,17 +1,17 @@
 #!/usr/bin/lua
---[=====[
+--[[
  ===-----------------------------------------------------------------------===
       Hodor Project level 2, by Julien Barbier
       Using Lua programming language.
 
       By Alexandro de Oliveira.
  ===-----------------------------------------------------------------------===
---]=====]
+--]]
 
 --  To install the http package do: $ luarocks install luasocket
 local http = require "socket.http"
 local ltn12 = require "ltn12"
-require "utils"
+require "utils" -- Importing the external file utils.lua.
 
 local url = "http://173.246.108.142/level2.php"
 local count = 0
