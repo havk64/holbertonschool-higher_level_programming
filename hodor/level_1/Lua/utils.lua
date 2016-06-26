@@ -1,12 +1,12 @@
 
---[=====[ (<<< Multiline comments in Lua)
+--[[ (<<< Multiline comments in Lua)
  ===-----------------------------------------------------------------------===
       Defining a couple of helper functions in order to make the code
       cleaner and more readable.
 
       By Alexandro de Oliveira.
  ===-----------------------------------------------------------------------===
---]=====]
+--]]
 
 -- Function to print a table:
 function p (s)

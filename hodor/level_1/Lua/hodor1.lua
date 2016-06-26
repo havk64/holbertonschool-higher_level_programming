@@ -1,4 +1,4 @@
-#!/usr/bin/lua
+#!/usr/bin/env lua
 --[[
  ===-----------------------------------------------------------------------===
       Hodor Project level 1, by Julien Barbier
@@ -28,7 +28,6 @@ while count < total do
                 }
     }
     local hc = headers['set-cookie']
-    -- print (hc)
     local tcookie = parse(hc)
     local cookie = tcookie['cookie']
     local value = tcookie['value']
