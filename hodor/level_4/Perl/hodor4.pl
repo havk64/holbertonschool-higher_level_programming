@@ -42,9 +42,6 @@ $ua->cookie_jar( $cookie_jar );
 
 # Setting the proxy(Tor socks5):
 $ua->proxy([qw/ http https /] => 'socks://127.0.0.1:9050');
-# Check the IP(Tor exit).
-# my $myip = $ua->get('https://api.ipify.org');
-# print "\n" . $myip->decoded_content() . "\n";
 
 # Request Tor Controller password:
 print "Tor Controller password: => ";
@@ -53,10 +50,17 @@ chomp (my $torpass = <STDIN>);
 my $count = 0; # Initializing the vote counter.
 print "How many votes? => ";
 chomp (my $total = <STDIN>);
+my $failures = 0; # Keep track of amount of attemptives to get a IP that wasn't used yet.
 
 while($count < $total) {
-    my $myip = $ua->get('https://api.ipify.org');
-    print "\n" . $myip->decoded_content() . "\n";
+    unless ($failures < 30) { # Wait for 3 hours if failed too many times.
+        print "Do you want a coffee?\n";
+        sleep(60 * 60 * 3);
+        $failures = 0;      # Reset the failures counter.
+    };
+    # Check the IP(Tor exit).
+    # my $myip = $ua->get('https://api.ipify.org');
+    # print "\n" . $myip->decoded_content() . "\n";
     # HEAD request to get the cookie value:
     my $reqh    = HTTP::Request->new(HEAD => $url);
     my $head    = $ua->request($reqh);
@@ -77,10 +81,11 @@ while($count < $total) {
     my $check = $request->header('Set-Cookie');
     my $pattern = 'HoldTheDoor';
     if(defined($check) && $check =~ m/$pattern/) { # Using regexp to check if the vote was confirmed.
-        print "Vote number: @{[$count + 1]}\n";  # Evaluation and string interpolation.
-                $count++;
+        print "\rVote number: @{[$count + 1]}\n";  # Evaluation and string interpolation.
+                $count++; $failures = 0; # Reset failures counter.
     } else {
-        print "Failed...\n";
+        print "\rFailed...\n";
+        $failures++; # Count each fail.
     }
     # To print the body:
     # print $request->decoded_content();
@@ -115,7 +120,7 @@ sub newIdentity {
     print $socket 'AUTHENTICATE "' . $torpass . '"' . "\n";
     print $socket 'SIGNAL NEWNYM' . "\n";
     my $var = <$socket>;# Checking the response to our request to new identity.
-    print $var . "\n";  # and printing it to the screen.
+    # print $var, "\n";  # and printing it to the screen.
     $socket->close();
-    sleep 1;
+    sleep 5;
 }
