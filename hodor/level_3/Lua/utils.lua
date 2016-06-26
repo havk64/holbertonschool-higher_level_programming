@@ -1,12 +1,12 @@
 
---[=====[ (<<< Multiline comments in Lua)
+--[[ (<<< Multiline comments in Lua)
  ===-----------------------------------------------------------------------===
       Defining a couple of helper functions in order to make the code
       cleaner and more readable.
 
       By Alexandro de Oliveira.
  ===-----------------------------------------------------------------------===
---]=====]
+--]]
 
 -- Function to print a table:
 function p (s)
@@ -21,7 +21,7 @@ function split(str, sep)
         if sep == nil then
                 sep = "%s"
         end
-        local t={} ; i=1
+        local t={} ; i = 1
         for str in string.gmatch(str, "([^"..sep.."]+)") do
                 t[i] = str
                 i = i + 1
@@ -37,4 +37,9 @@ function parse(str)
         cookie = cookie,
         value = value
     }
+end
+
+function trim(s)
+ local from = s:match"^%s*()"
+ return from > #s and "" or s:match(".*%S", from)
 end

@@ -1,4 +1,4 @@
-#!/usr/bin/lua
+#!/usr/bin/env lua
 --[[
  ===-----------------------------------------------------------------------===
       Hodor Project level 3, by Julien Barbier
