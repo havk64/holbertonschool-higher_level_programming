@@ -38,3 +38,16 @@ function parse(str)
         value = value
     }
 end
+
+-- Function trim deletes spaces, newlines, from a string.
+function trim(s)
+ local from = s:match"^%s*()"
+ return from > #s and "" or s:match(".*%S", from)
+end
+
+--[=====[
+n = number (1)
+ok = number (200)
+header = table
+line = http 1.1 200 (string)
+--]=====]

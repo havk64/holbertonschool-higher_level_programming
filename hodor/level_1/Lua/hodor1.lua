@@ -1,12 +1,12 @@
 #!/usr/bin/lua
---[=====[
+--[[
  ===-----------------------------------------------------------------------===
       Hodor Project level 1, by Julien Barbier
       Using Lua programming language.
 
       By Alexandro de Oliveira.
  ===-----------------------------------------------------------------------===
---]=====]
+--]]
 
 --  To install the http package do: $ luarocks install luasocket
 local http = require "socket.http"
@@ -19,7 +19,7 @@ io.write("How many votes? => ") -- Prints the message requesting total votes.
 local total = io.read("*n")     -- Reading a number from user.
 while count < total do
     -- HEAD request to get a cookie and use it in the POST request.
-    local body, code, headers, status = http.request {
+    local _, _, headers = http.request {
         method = "HEAD",
         url = url,
         headers =
@@ -38,9 +38,9 @@ while count < total do
     -- Preparing the POST request:
     local reqbody = "id=23&holdthedoor=submit&key="..value
     local respbody = {}
-    local body, code, headers, status = http.request {
+    local _, _, headers = http.request {
         method = "POST",
-        url = "http://173.246.108.142/level1.php",
+        url = url,
         source = ltn12.source.string(reqbody),
         headers =
                 {
