@@ -1,3 +1,13 @@
+"""
+ ===----------------------------------------------------------===
+        Divide and Rule Project by Guillaume
+        Concurrency in Python.
+        Task 5: Go go go!
+
+        by Alexandro de Oliveira for Holberton School.
+ ===----------------------------------------------------------===
+"""
+
 from threading import Thread, Lock, activeCount
 
 class Sum():
@@ -14,7 +24,6 @@ class Sum():
             thread.start()
         thread = SumThread(numbers[size * (nb_threads - 1):])
         thread.start()
-
 
     def isComputing(self):
         return False if activeCount() == 1 else True
