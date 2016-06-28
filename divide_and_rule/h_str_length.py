@@ -1,7 +1,17 @@
-from threading import Thread, Lock
+"""
+ ===----------------------------------------------------------===
+        Divide and Rule Project by Guillaume
+        Concurrency in Python.
+        Task 1: Split and count faster...
 
+        by Alexandro de Oliveira for Holberton School.
+ ===----------------------------------------------------------===
+"""
+
+from threading import Thread
 
 class StrLengthThread(Thread):
+    """Class definition"""
     def __init__(self, word):
         Thread.__init__(self)
         if not isinstance(word, str):
@@ -11,5 +21,5 @@ class StrLengthThread(Thread):
     total_str_length = 0
 
     def run(self):
-        with Lock():
-            self.total_str_length += len(self.__word)
+        """Adding the length of each word to public attribute"""
+        StrLengthThread.total_str_length += len(self.__word)
