@@ -1,7 +1,18 @@
+"""
+ ===----------------------------------------------------------===
+        Divide and Rule Project by Guillaume
+        Concurrency in Python.
+        Task 2: Double effect: Split and count faster...
+
+        by Alexandro de Oliveira for Holberton School.
+ ===----------------------------------------------------------===
+"""
+
 from threading import Thread
 from sys import argv
 
 class StrLenThread(Thread):
+    "Class definition"
     def __init__(self, word):
         Thread.__init__(self)
         if not isinstance(word, str):
@@ -12,7 +23,7 @@ class StrLenThread(Thread):
         total_str_length = 0;
         StrLenThread.total_str_length += len(self.__word)
 
-
+"""If more than one command line argument warning about usage:"""
 if len(argv) > 2:
     print "Usage: \n$ python {} 'word'".format(argv[0])
     exit
