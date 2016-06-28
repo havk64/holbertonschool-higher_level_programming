@@ -1,6 +1,17 @@
+"""
+ ===----------------------------------------------------------===
+        Divide and Rule Project by Guillaume
+        Concurrency in Python.
+        Task 4: Slowest sorting algorithm.
+
+        by Alexandro de Oliveira for Holberton School.
+ ===----------------------------------------------------------===
+"""
+
 from threading import Thread, Lock, activeCount
 
 class OrderedArrayThread(Thread):
+    """Definition of the concurrent class"""
     def __init__(self, number):
         Thread.__init__(self)
         if not isinstance(number, int):
@@ -16,8 +27,10 @@ class OrderedArrayThread(Thread):
 
 
 class OrderedArray():
+    """OrderedArray definition"""
     def __init__(self):
         pass
+
     def add(self, number):
         if not isinstance(number, int):
             raise Exception("number is not an integer")
