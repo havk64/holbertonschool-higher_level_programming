@@ -15,8 +15,7 @@ import java.net.URL;
 import java.util.Scanner;
 import java.util.List;
 import java.util.Map;
-
-import javax.net.ssl.HttpsURLConnection;
+//import javax.net.ssl.HttpsURLConnection; //For secure connections.
 
 public class Hodor0 {
 	private static final String  P_URL = "http://173.246.108.142/level0.php";
@@ -65,7 +64,6 @@ public class Hodor0 {
 		System.out.println("Vote number: " + (n + 1));
 		// Print the response body(html):
 		// System.out.println(response.toString());
-
 	}
 
 }
