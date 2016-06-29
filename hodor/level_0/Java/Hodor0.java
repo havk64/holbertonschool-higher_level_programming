@@ -12,6 +12,7 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Scanner;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -19,8 +20,12 @@ public class Hodor0 {
 	private final String USER_AGENT = "Havk64 Java http requests";
 	public static void main(String[] args) throws Exception {
 		Hodor0 http = new Hodor0();
-		System.out.println("\nStarting...");
-		for(int i = 0; i < 1024; i++) {
+		// Read the amount of votes from user:
+		System.out.println("\nHow many votes? => ");
+		Scanner reader = new Scanner(System.in);
+		int total = reader.nextInt();
+		// Calling the sendPost function "total" times:
+		for(int i = 0; i < total; i++) {
 			http.sendPost(i);
 		}
 	}
