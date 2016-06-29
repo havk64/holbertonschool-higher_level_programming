@@ -2,21 +2,22 @@
  * ===--------------------------------------------------------------------------===
  * 		Hodor Project Level 0, by Julien Barbier.
  * 		Solution using Scala Programming language.
+ *      Using Scala version "2.11.8" + scalaj.http
  *
  *		by Alexandro de Oliveira, for Holberton School.
  * ===--------------------------------------------------------------------------===
  */
 
-import scalaj.http._
-//import scala.io.StdIn.readInt // for readInt
+import scalaj.http._ //{HttpResponse, HttpOptions}
+import scala.io.StdIn.readInt // for readInt
 
 object Hodor0 {
     def main(args: Array[String]) {
         // Get number from user:
-        //println("How many votes? => ")
-        //val total = readInt()
+        println("How many votes? => ")
+        val total = readInt()
         var count: Int = 0
-        for(count <- 0 until 1024) {
+        for(count <- 0 until total) {
             posting(count)
         }
     }
