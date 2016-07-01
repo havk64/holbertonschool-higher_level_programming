@@ -32,6 +32,6 @@ main = do
             }
 
     response <- httpLbs request manager
-    putStrLn $ "The status code was: "
+    putStrLn $ "The status code was: " `Data.Monoid.mappend`
             ++ show (statusCode $ responseStatus response)
     L8.putStrLn $ responseBody response
