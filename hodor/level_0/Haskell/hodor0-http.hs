@@ -10,9 +10,10 @@
 
 {-# LANGUAGE OverloadedStrings #-}
 import qualified Data.ByteString.Lazy.Char8 as L8
-import           Network.HTTP.Client
+import      Network.HTTP.Client
 -- import           Network.HTTP.Client.TLS -- if https use "tlsManagerSettings" in newManager.
-import           Network.HTTP.Types.Status  (statusCode)
+import      Network.HTTP.Types.Status  (statusCode)
+import      Data.Monoid
 
 main :: IO ()
 main = do
@@ -32,6 +33,6 @@ main = do
             }
 
     response <- httpLbs request manager
-    putStrLn $ "The status code was: " `Data.Monoid.mappend`
-            ++ show (statusCode $ responseStatus response)
+    putStrLn $ "The status code was: " `mappend`
+            show (statusCode $ responseStatus response)
     L8.putStrLn $ responseBody response
