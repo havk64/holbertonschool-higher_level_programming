@@ -1,4 +1,4 @@
-#!/usr/bin/lua
+#!/usr/bin/env lua
 --[[
  ===-----------------------------------------------------------------------===
       Hodor Project level 0, by Julien Barbier
@@ -6,13 +6,13 @@
 
       By Alexandro de Oliveira.
  ===-----------------------------------------------------------------------===
---]]
+ ]]
 
 --  To install the http package do: $ luarocks install luasocket
 local http = require "socket.http"
 local ltn12 = require "ltn12"
 local io = require "io" -- To print the response body.
-require "utils"
+local utils = require "utils"
 
 -- Defining some variables:
 local url = "http://173.246.108.142/level0.php"
@@ -32,19 +32,20 @@ repeat
         headers =
                 {
                         ["Accept"] = "*/*",
+                        ["User-Agent"] = "Havk64 LuaSocket requests",
                         -- Use this option if you don't to print the html body:
-                        --["Accept-Encoding"] = "gzip, deflate",
+                        ["Accept-Encoding"] = "gzip, deflate",
                         ["Accept-Language"] = "en-us",
                         ["Content-Type"] = "application/x-www-form-urlencoded",
                         ["content-length"] = string.len(reqbody)
                     },
                     -- Reading the response body:
-                     sink = ltn12.sink.table(html)
+                    sink = ltn12.sink.table(html)
                 }
         -- To print the response body(html):
         -- print(tostring(html[1]))
         -- To print the headers:
-        -- print (p(headers))
+        print (utils.p(headers))
         print ("Vote number: "..(count + 1))
         count = count + 1
 
