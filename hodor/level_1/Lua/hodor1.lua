@@ -6,12 +6,12 @@
 
       By Alexandro de Oliveira.
  ===-----------------------------------------------------------------------===
---]]
+ ]]
 
 --  To install the http package do: $ luarocks install luasocket
 local http = require "socket.http"
 local ltn12 = require "ltn12"
-require "utils"
+local utils = require "utils"
 
 local url = "http://173.246.108.142/level1.php"
 local count = 0
@@ -19,7 +19,7 @@ io.write("How many votes? => ") -- Prints the message requesting total votes.
 local total = io.read("*n")     -- Reading a number from user.
 while count < total do
     -- HEAD request to get a cookie and use it in the POST request.
-    local _, _, headers = http.request {
+    local _, _, header = http.request {
         method = "HEAD",
         url = url,
         headers =
@@ -27,15 +27,15 @@ while count < total do
                         ['User-Agent'] = "Havk64 Lua Requests"
                 }
     }
-    local hc = headers['set-cookie']
-    local tcookie = parse(hc)
+    local hc = header['set-cookie']
+    local tcookie = utils.parse(hc)
     local cookie = tcookie['cookie']
     local value = tcookie['value']
     -- Print the Header of HEAD request:
     -- print (p(headers))
 
     -- Preparing the POST request:
-    local reqbody = "id=23&holdthedoor=submit&key="..value
+    local reqbody = "id=23&holdthedoor=submit&key=" .. value
     local respbody = {}
     local _, _, headers = http.request {
         method = "POST",
@@ -47,6 +47,7 @@ while count < total do
                         ["Accept-Encoding"] = "gzip, deflate",
                         ["Accept-Language"] = "en-us",
                         ['User-Agent'] = "Havk64 Lua Script Requests",
+                        --['Connection'] = "keep-alive",
                         ["Cookie"] = cookie,
                         ["Content-Type"] = "application/x-www-form-urlencoded",
                         ["content-length"] = string.len(reqbody)
@@ -59,7 +60,7 @@ while count < total do
         -- print (p(headers))
         local test = headers['set-cookie']
         if test ~= nil then
-            print("Vote number: "..(count + 1))
+            print("Vote number: " .. (count + 1))
             count = count + 1
         else
             print("Failed")

@@ -6,10 +6,11 @@
 
       By Alexandro de Oliveira.
  ===-----------------------------------------------------------------------===
---]]
+ ]]
 
+local Utils = {}
 -- Function to print a table:
-function p (s)
+function Utils.p (s)
     for k, v in pairs(s) do
         print (k ,"=>", v)
     end
@@ -17,11 +18,11 @@ end
 
 -- Function split returns a Table(array like) of strings.
 -- Lua doesn't have a builtin "split" method, but it has regexp. Using it here:
-function split(str, sep)
+function Utils.split(str, sep)
         if sep == nil then
                 sep = "%s"
         end
-        local t={} ; i=1
+        local t={} ; local i=1
         for str in string.gmatch(str, "([^"..sep.."]+)") do
                 t[i] = str
                 i = i + 1
@@ -30,9 +31,9 @@ function split(str, sep)
 end
 
 -- Function to parse a cookie from the http header(that uses the split function):
-function parse(str)
-    local cookie = split(str, ";")[1]
-    local value = split(cookie, "=")[2]
+function Utils.parse(str)
+    local cookie = Utils.split(str, ";")[1]
+    local value = Utils.split(cookie, "=")[2]
     return {
         cookie = cookie,
         value = value
@@ -40,10 +41,12 @@ function parse(str)
 end
 
 -- Function trim deletes spaces, newlines, from a string.
-function trim(s)
+function Utils.trim(s)
  local from = s:match"^%s*()"
  return from > #s and "" or s:match(".*%S", from)
 end
+
+return Utils
 
 --[=====[
 n = number (1)
