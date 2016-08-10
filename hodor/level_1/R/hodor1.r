@@ -33,18 +33,20 @@ setRequest  <- function() {
 # Defining variables:
 url     <- "http://173.246.108.142/level1.php"
 
+# Getting a fresh cookie to set the request:
+request <- setRequest()
+
 # Get number from user:
 cat("How many votes? => ")
 total   <- as.integer(readLines("stdin", 1))
-count   <- 0
+count   <- 0L
 
 while(count < total) {
-    request <- setRequest()
-    p <- POST(url, body = request$body, encode = "form", request$headers)
+    p <- POST(url, body = request$body, encode = "form", request$headers, set_cookies("Cookie" = paste(cookies(head)$name, sep="=", cookies(head)$value)))
     resp = headers(p)$`set-cookie`
     if(!is.null(resp)) {
         cat(".")
-        count <- count + 1
+        count <- count + 1L
     } else {
         cat("x")
     }
