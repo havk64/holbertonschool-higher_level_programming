@@ -13,8 +13,11 @@ code    <- "http://173.246.108.142/captcha.php"
 url     <- "http://173.246.108.142/level3.php"
 
 header  <- add_headers("User-Agent" = "Windows NT 5.1 - havk64 R Language Requests", "Referer" = url)
-votes   <- 0
-while(votes < 1024) {
+votes   <- 0L
+cat("How many votes? => ")
+total   <- as.integer(readLines("stdin", 1))
+
+while(votes < total) {
     # Some great code goes here!  >:-)
     fetch   <- GET(code, header)
     bin     <- content(fetch, "raw")
