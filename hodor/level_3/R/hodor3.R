@@ -18,7 +18,6 @@ cat("How many votes? => ")
 total   <- as.integer(readLines("stdin", 1))
 
 while(votes < total) {
-    # Some great code goes here!  >:-)
     fetch   <- GET(code, header)
     bin     <- content(fetch, "raw")
     writeBin(bin, "tmp.txt")
