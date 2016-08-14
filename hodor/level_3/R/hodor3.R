@@ -42,3 +42,5 @@ while(votes < total) {
         cat( "Failed...", "\n")
     }
 }
+
+cat("Total of valid votes: ", votes + 1, "\n")
