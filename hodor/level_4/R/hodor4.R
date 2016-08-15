@@ -27,7 +27,9 @@ h       <- basicHeaderGatherer()
 # Set connection to Tor Controller to request new identity:
 con     <- socketConnection(host="127.0.0.1",port=9051)
 count   <- 1L
-total   <- 98L
+cat("How many votes? => ")
+total   <- as.integer(readLines("stdin", 1))
+# total   <- 98L # Number requested in exercise.
 while(count < total) {
     # Get and parse a fresh cookie:
     html    <- getURL(url = url, curl = handle, headerfunction = h$update)
