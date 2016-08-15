@@ -26,8 +26,8 @@ h       <- basicHeaderGatherer()
 # ip      <- getURL("https://api.ipify.org", curl = handle, headerFunction = h$update)
 # Set connection to Tor Controller to request new identity:
 con     <- socketConnection(host="127.0.0.1",port=9051)
-count   <- 1
-total   <- 98
+count   <- 1L
+total   <- 98L
 while(count < total) {
     # Get and parse a fresh cookie:
     html    <- getURL(url = url, curl = handle, headerfunction = h$update)
@@ -48,3 +48,4 @@ while(count < total) {
     Sys.sleep(10)
     count <- count + 1
 }
+cat("Total of valid voltes: ", count)
