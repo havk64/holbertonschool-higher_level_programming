@@ -1,6 +1,6 @@
 %% ===-----Hodor Level 1---------------------------------------------===
 %%          Hodor Level 1 Project, by Julien Barbier.
-%%  "Make 1024 votes in this page: http://173.246.108.142/level1.php"
+%%  "1024 votes(POST requests)in the page: http://173.246.108.142/level1.php"
 %%  Solution using Erlang code.
 %%
 %%  by Alexandro de Oliveira.
@@ -25,7 +25,8 @@ posting() ->
 Method = post,
 URL = "http://173.246.108.142/level1.php",
 Cookie = getCookie(URL),
-Header = [{"User-Agent","havk64 Erlang Requests"}, {"Cookie", "HoldTheDoor=" ++ Cookie}],
+Header = [{"User-Agent","havk64 Erlang Requests"}, 
+	  {"Cookie", "HoldTheDoor=" ++ Cookie}],
 Type = "application/x-www-form-urlencoded",
 Body = "id=23&holdthedoor=submit&key=" ++ Cookie,
 
