@@ -24,7 +24,7 @@ local total = io.read("*n")     -- Reading a number from user.
 while count < total do
     -- =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
     -- Fetch the captcha, decoding it, and parse PHP session cookie:
-    local filePath = lfs.currentdir().."/tmp.png"
+    local filePath = lfs.currentdir() .. "/tmp.png"
     local img = assert(io.open(filePath, "w"))
     local _, _, header = http.request {
         url = captcha_url,
@@ -60,7 +60,7 @@ while count < total do
 
     -- =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
     -- Our POST request:
-    local reqbody = "id=23&holdthedoor=submit&key="..value.."&captcha="..captcha
+    local reqbody = "id=23&holdthedoor=submit&key=" .. value .. "&captcha=" .. captcha
     local _, _, headers = http.request {
         method = "POST",
         url = url,
@@ -72,7 +72,7 @@ while count < total do
                         ["Accept-Language"] = "en-us",
                         ["Referer"] = url,
                         ['User-Agent'] = "Windows NT 5.1 'Moonlight' Havk64 Lua Script Requests",
-                        ["Cookie"] = cookie.."; "..cookie_session,
+                        ["Cookie"] = cookie .. "; " .. cookie_session,
                         ["Content-Type"] = "application/x-www-form-urlencoded",
                         ["content-length"] = string.len(reqbody)
                     },
@@ -83,7 +83,7 @@ while count < total do
         -- print (p(headers))
         local test = headers['set-cookie']
         if test ~= nil then -- Testing if the vote was valied(a new cookie was set):
-            print("Vote number: "..(count + 1))
+            print("Vote number: " .. (count + 1))
             count = count + 1
         else
             print("Failed")
