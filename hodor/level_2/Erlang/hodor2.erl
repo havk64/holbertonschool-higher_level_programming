@@ -1,10 +1,11 @@
-%% ===-----Hodor Level 2---------------------------------------------===
+%% ===-----Hodor Level 2------------------------------------------------------===
 %%          Hodor Level 2 Project, by Julien Barbier.
-%%  "Make 1024 votes in this page: http://173.246.108.142/level2.php"
-%%  Solution using Erlang code.
+%%  "1024 votes(POST requests) in the page: http://173.246.108.142/level2.php"
+%%  Dealing with PHP access control(accepts only windows requests)
+%%  Solution using Erlang language.
 %%
 %%  by Alexandro de Oliveira.
-%% ===---------------------------------------------------------------===
+%% ===------------------------------------------------------------------------===
 
 %% Defining the module and exporting each function(to Erlang Shell):
 -module(hodor2).
@@ -25,13 +26,14 @@ posting() ->
 Method = post,
 URL = "http://173.246.108.142/level2.php",
 Cookie = getCookie(URL),
-Header = [{"User-Agent","Windows NT 5.1 havk64 Erlang Requests"}, {"Cookie", "HoldTheDoor=" ++ Cookie},
-    {"Referer", URL}],
+Header = [{"User-Agent","Windows NT 5.1 havk64 Erlang Requests"},
+	  {"Cookie", "HoldTheDoor=" ++ Cookie},
+	  {"Referer", URL}],
 Type = "application/x-www-form-urlencoded",
 Body = "id=404&holdthedoor=submit&key=" ++ Cookie,
 httpc:request(Method, {URL, Header, Type, Body }, [], []). %% The POST request.
 
-%% Our "for loop" in a form of a recursive function(Erlang way of doing it)
+%% A "for loop" in a form of a recursive function(Erlang way) 
 %% Functional(as opposed to Imperative) languages don't implement loops.
 vote(0,_) ->
    [];
