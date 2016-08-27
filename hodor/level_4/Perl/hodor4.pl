@@ -49,6 +49,7 @@ chomp (my $torpass = <STDIN>);
 
 my $count = 0; # Initializing the vote counter.
 print "How many votes? => ";
+# Get the total votes from user
 chomp (my $total = <STDIN>);
 my $failures = 0; # Keep track of amount of attemptives to get a IP that wasn't used yet.
 
