@@ -1,7 +1,7 @@
 #!/bin/bash
 # ===---Hodor Level 4----------------------------------------------------------===
 #    Solution for the Hodor Project, Level 4 by Julien Barbier.
-#    Using Curl through the Tor network. Using socks5 proxy.
+#    Using Curl through the Tor network and socks5 proxy.
 #
 #    by Alexandro de Oliveira, for Holberton School
 # ===--------------------------------------------------------------------------===
@@ -11,7 +11,7 @@ printf "Controller password => "
 read passwd
 # Address to verify the current IP(Tor exit).
 ip="https://api.ipify.org"
-# check="http://clientn.free-hideip.com/map/whatismyip.php" # Alternative IP checker.
+# ip="http://clientn.free-hideip.com/map/whatismyip.php" # Alternative IP checker.
 URL="http://173.246.108.142/level4.php"
 ID="id=23"
 COUNT=0
@@ -36,6 +36,6 @@ do
     # echo "Changing identity..."
     # Print the actual IP address:
     # curl -s --socks5 127.0.0.1:9050 $ip
-    sleep 10 # 10 seconds of wait is enough to request new identity in Tor network.
+    sleep 10 # 10 seconds is enough to wait for a new identity in Tor network after que request.
              # Not wait work too but chances of get new IP decrease.
 done
