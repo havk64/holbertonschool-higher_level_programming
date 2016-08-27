@@ -10,9 +10,9 @@
 
 URL=http://173.246.108.142/level0.php	# URL
 TYPE=application/x-www-form-urlencoded	# Content Type.
-REQ=$((1 << 10))			# Total number of requests.
+read -p "How many votes? => " REQ	# Total number of requests.
 FILE=params	 			# Name of the file with the encode string to be submitted.
-CONC=50					# Number of concurrent requests.
+CONC=20					# Number of concurrent requests.
 VERB=1					# Verbosity level
 
 ab -n $REQ -c $CONC -T $TYPE -p $FILE -v $VERB $URL
