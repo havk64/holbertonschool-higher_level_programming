@@ -20,7 +20,7 @@ local total = io.read("*n")     -- Reading a number from user.
 
 while count < total do
     -- HEAD request to get a cookie and use it in the POST request.
-    local body, code, headers, status = http.request {
+    local _, _, header = http.request {
         method = "HEAD",
         url = url,
         headers =
@@ -28,7 +28,7 @@ while count < total do
                         ['User-Agent'] = "Windows NT 5.1 'Moonlight' Havk64 Lua Requests"
                 }
     }
-    local hc = headers['set-cookie']
+    local hc = header['set-cookie']
     -- print (hc)
     local tcookie = parse(hc)
     local cookie = tcookie['cookie']
@@ -39,7 +39,7 @@ while count < total do
     -- Preparing the POST request:
     local reqbody = "id=23&holdthedoor=submit&key="..value
     local respbody = {}
-    local body, code, headers, status = http.request {
+    local _, _, headers = http.request {
         method = "POST",
         url = url,
         source = ltn12.source.string(reqbody),
